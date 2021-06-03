@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/supalog/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/supalog/static/js/main.013e9d26.chunk.js",
-    "main.js.map": "/supalog/static/js/main.013e9d26.chunk.js.map",
-    "runtime-main.js": "/supalog/static/js/runtime-main.ec9b842b.js",
-    "runtime-main.js.map": "/supalog/static/js/runtime-main.ec9b842b.js.map",
-    "static/js/2.090505a9.chunk.js": "/supalog/static/js/2.090505a9.chunk.js",
-    "static/js/2.090505a9.chunk.js.map": "/supalog/static/js/2.090505a9.chunk.js.map",
-    "static/js/3.e05c6164.chunk.js": "/supalog/static/js/3.e05c6164.chunk.js",
-    "static/js/3.e05c6164.chunk.js.map": "/supalog/static/js/3.e05c6164.chunk.js.map",
+    "main.css": "/supalog/static/css/main.2bad7ec2.chunk.css",
+    "main.js": "/supalog/static/js/main.69d45387.chunk.js",
+    "main.js.map": "/supalog/static/js/main.69d45387.chunk.js.map",
+    "runtime-main.js": "/supalog/static/js/runtime-main.8045ff62.js",
+    "runtime-main.js.map": "/supalog/static/js/runtime-main.8045ff62.js.map",
+    "static/js/2.42c2294f.chunk.js": "/supalog/static/js/2.42c2294f.chunk.js",
+    "static/js/2.42c2294f.chunk.js.map": "/supalog/static/js/2.42c2294f.chunk.js.map",
+    "static/js/3.d23ce805.chunk.js": "/supalog/static/js/3.d23ce805.chunk.js",
+    "static/js/3.d23ce805.chunk.js.map": "/supalog/static/js/3.d23ce805.chunk.js.map",
     "index.html": "/supalog/index.html",
-    "static/css/main.9d5b29c0.chunk.css.map": "/supalog/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.090505a9.chunk.js.LICENSE.txt": "/supalog/static/js/2.090505a9.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/supalog/static/media/logo.6ce24c58.svg"
+    "static/css/main.2bad7ec2.chunk.css.map": "/supalog/static/css/main.2bad7ec2.chunk.css.map",
+    "static/js/2.42c2294f.chunk.js.LICENSE.txt": "/supalog/static/js/2.42c2294f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/supalog/static/media/bg.f517f15d.png",
+    "static/media/zilla.9cccacfa.png": "/supalog/static/media/zilla.9cccacfa.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.ec9b842b.js",
-    "static/js/2.090505a9.chunk.js",
-    "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.013e9d26.chunk.js"
+    "static/js/runtime-main.8045ff62.js",
+    "static/js/2.42c2294f.chunk.js",
+    "static/css/main.2bad7ec2.chunk.css",
+    "static/js/main.69d45387.chunk.js"
   ]
 }
