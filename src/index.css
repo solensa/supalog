@@ -26,9 +26,27 @@ _\ \ (_| | | |_  | | | (__|   <  \__ \ |_| |_| | (_| | | (_) |
   font-family:arial, helvetica, sans-serif;
 } */
 
-html {
-  position: relative;
-  min-height: 100%;
+html,
+body {
+  height: 100%;
+}
+/* body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+} */
+#container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+#main-content {
+  flex: 1;
 }
 
 textarea {
@@ -408,13 +426,13 @@ button.bounceBtn2:hover {
   width: 100%;
   text-align: center;
   background-color: #3708a2;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   padding: 15px 15px;
   /* position: relative; */
   border-top: 1px solid #1a0054;
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 0; */
 }
 
 .footer a,
@@ -538,6 +556,11 @@ button.bounceBtn2:hover {
 
 #send1 {
   margin-top: 30px;
+}
+.supalogLogo {
+  margin: 0 auto 25px auto;
+  display: block;
+  height: 95px;
 }
 
 /* - - Mobile Styles - - */

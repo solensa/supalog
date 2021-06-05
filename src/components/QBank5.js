@@ -1,12 +1,26 @@
 import React from "react";
+import Question from "./Question";
+import { useHistory } from "react-router-dom";
+import log from "../images/log.png";
 
 const QBank5 = () => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/hsm");
+  };
+
   return (
-    <div>
-      <h2>About Page</h2>
-      <main>
-        <p>This section contains information about...</p>
-      </main>
+    <div id="appBox" className="panel wideClear active">
+      <Question str="hello" />
+      <img className="supalogLogo" src={log} />
+      <Question str="hello2" />
+      <button
+        id="send1"
+        className="hvr-bounce-to-top bounceBtn"
+        onClick={handleClick}
+      >
+        Finish
+      </button>
     </div>
   );
 };

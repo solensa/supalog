@@ -7,8 +7,8 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="wideClear">
-      <div className="quiz">
+    <div className="wideClear" id="container">
+      <div className="quiz" id="main-content">
         {/* <div>
         <Link to="/">Home</Link>
         <Link to="/hsm">HSM</Link>
