@@ -6,7 +6,7 @@ import log from "../images/log.png";
 const QBank5 = () => {
   const history = useHistory();
   const handleClick = () => {
-    history.push("/hsm");
+    history.push("/results");
   };
 
   return (

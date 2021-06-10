@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import QBank5 from "./components/QBank5";
 import Home from "./components/Home";
+import Results from "./components/Results";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -20,6 +21,9 @@ const App = () => {
           </Route>
           <Route path="/hsm">
             <QBank5 />
+          </Route>
+          <Route path="/results">
+            <Results />
           </Route>
         </Switch>
       </div>

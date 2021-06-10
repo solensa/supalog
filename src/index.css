@@ -21,6 +21,11 @@ _\ \ (_| | | |_  | | | (__|   <  \__ \ |_| |_| | (_| | | (_) |
    Robert Claridge & Max Sutcliffe
 ============================================================================= */
 
+/* @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap");
+
 /* body {
   padding:0 20px 0 20px;
   font-family:arial, helvetica, sans-serif;
@@ -561,6 +566,16 @@ button.bounceBtn2:hover {
   margin: 0 auto 25px auto;
   display: block;
   height: 95px;
+}
+
+.pieChartText {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  top: -56px;
+  font-size: 56px;
+  font-weight: 600;
+  font-family: "Barlow Condensed";
 }
 
 /* - - Mobile Styles - - */
