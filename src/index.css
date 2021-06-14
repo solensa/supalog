@@ -23,9 +23,9 @@ _\ \ (_| | | |_  | | | (__|   <  \__ \ |_| |_| | (_| | | (_) |
 
 /* @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap"); */
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600&display=swap");
 /* body {
   padding:0 20px 0 20px;
   font-family:arial, helvetica, sans-serif;
@@ -453,7 +453,7 @@ button.bounceBtn2:hover {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -104px;
+  bottom: 24px;
   width: 150px;
   height: auto;
   opacity: 0;
@@ -568,14 +568,62 @@ button.bounceBtn2:hover {
   height: 95px;
 }
 
+.pieChartTitle {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  font-weight: 400;
+  font-family: "Barlow Condensed";
+  font-size: 19px;
+  top: 10px;
+  color: #3708a2;
+}
 .pieChartText {
   margin: 0 auto;
   position: relative;
   text-align: center;
-  top: -56px;
-  font-size: 56px;
-  font-weight: 600;
+  top: -50px;
+  font-size: 50px;
+  font-weight: 500;
   font-family: "Barlow Condensed";
+}
+
+element {
+  --WIDTH: 170px;
+}
+
+.recharts-wrapper {
+  margin: 0 auto;
+  width: 170px;
+}
+.recharts-surface {
+  padding-top: 2px;
+}
+
+.barLabel {
+  font-weight: 400;
+  font-family: "Barlow Condensed";
+  color: #3708a2;
+}
+.barLabel2 {
+  font-weight: 400;
+  font-family: "Barlow Condensed";
+  color: #3708a2;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.resultColumn div:nth-child(3) div:nth-child(1) {
+  /* background-color: red; */
+  height: 25px;
+}
+.resultColumn {
+  float: left;
+  width: 170px;
+}
+
+.secondRow .resultColumn {
+  margin-top: -65px;
 }
 
 /* - - Mobile Styles - - */
