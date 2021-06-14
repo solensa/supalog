@@ -22,32 +22,36 @@ const Results = () => {
   ];
   const data2 = [
     {
-      name: "Page A",
-      value: 100,
+      name: "Perf. Mgt.",
+      value: 0,
     },
     {
-      name: "Page B",
-      value: 70,
+      name: "Recruit & Select",
+      value: 0,
     },
     {
-      name: "Page C",
-      value: 40,
+      name: "Employee Relations",
+      value: 0,
     },
     {
-      name: "Page D",
-      value: 77,
+      name: "Team Perf. & Dev.",
+      value: 0,
     },
     {
-      name: "Page E",
-      value: 88,
+      name: "Talent Mgt.",
+      value: 0,
     },
     {
-      name: "Page F",
-      value: 88,
+      name: "Time Mgt.",
+      value: 0,
     },
     {
-      name: "Page G",
-      value: 64,
+      name: "Ldrshp. & Drctvnss.",
+      value: 0,
+    },
+    {
+      name: "Comms & Infl.",
+      value: 0,
     },
   ];
   const data3 = [

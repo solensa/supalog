@@ -586,6 +586,8 @@ button.bounceBtn2:hover {
   font-size: 50px;
   font-weight: 500;
   font-family: "Barlow Condensed";
+  display: flex;
+  justify-content: center;
 }
 
 element {
@@ -623,9 +625,14 @@ element {
 }
 
 .secondRow .resultColumn {
-  margin-top: -65px;
+  /* margin-top: -65px; */
 }
-
+.tbc {
+  font-weight: 400;
+  font-size: 35px;
+  position: absolute;
+  top: 14px;
+}
 /* - - Mobile Styles - - */
 
 @media (max-width: 720px) {

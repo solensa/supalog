@@ -15,13 +15,21 @@ const StatColumn = ({ title, data2 }) => {
     avgScore = avgScore + data2[i].value;
   }
   avgScore = avgScore / data2.length;
+
   const data = [
     { name: "Category score / 100", value: avgScore },
     { name: "Remaining", value: 100 - avgScore },
   ];
 
+  let headlineValue = Math.round(
+    (100 * data[0].value) / (data[0].value + data[1].value)
+  );
+
   const CustomLabel = ({ x, y, name, value }) => {
     y = y - 21;
+    if (headlineValue == 0) {
+      value = "TBC";
+    }
     return (
       <g>
         <foreignObject x={x} y={y} width={WIDTH - 40} height={30}>
@@ -53,15 +61,13 @@ const StatColumn = ({ title, data2 }) => {
               <Cell
                 key={`cell-${index}`}
                 fill={
-                  Math.round(
-                    (100 * data[0].value) / (data[0].value + data[1].value)
-                  ) >= 75
+                  headlineValue >= 75
                     ? "#50A684"
-                    : Math.round(
-                        (100 * data[0].value) / (data[0].value + data[1].value)
-                      ) >= 25
+                    : headlineValue >= 25
                     ? "#F1C050"
-                    : "#F7645C"
+                    : headlineValue > 0
+                    ? "#F7645C"
+                    : "#3708a2"
                 }
               />
             ) : (
@@ -75,18 +81,16 @@ const StatColumn = ({ title, data2 }) => {
           className="pieChartText"
           style={{
             color:
-              Math.round(
-                (100 * data[0].value) / (data[0].value + data[1].value)
-              ) >= 75
+              headlineValue >= 75
                 ? "#50A684"
-                : Math.round(
-                    (100 * data[0].value) / (data[0].value + data[1].value)
-                  ) >= 25
+                : headlineValue >= 25
                 ? "#F1C050"
-                : "#F7645C",
+                : headlineValue > 0
+                ? "#F7645C"
+                : "#3708a2",
           }}
         >
-          {Math.round((100 * data[0].value) / (data[0].value + data[1].value))}
+          {headlineValue > 0 ? headlineValue : <div className="tbc">TBC</div>}
         </div>
         <BarChart
           layout="vertical"
