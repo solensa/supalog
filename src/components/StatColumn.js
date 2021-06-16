@@ -6,6 +6,7 @@ const WIDTH = 170;
 
 const StatColumn = ({ title, data2 }) => {
   let HEIGHT = data2.length * 45.875;
+  let btnMargin = "btnMargin" + data2.length;
   if (data2.length >= 6) {
     HEIGHT = 420;
   }
@@ -28,7 +29,7 @@ const StatColumn = ({ title, data2 }) => {
   const CustomLabel = ({ x, y, name, value }) => {
     y = y - 21;
     if (headlineValue == 0) {
-      value = "TBC";
+      value = "- -";
     }
     return (
       <g>
@@ -38,6 +39,10 @@ const StatColumn = ({ title, data2 }) => {
         </foreignObject>
       </g>
     );
+  };
+
+  const handleClick = () => {
+    // history.push("/results");
   };
 
   return (
@@ -90,7 +95,7 @@ const StatColumn = ({ title, data2 }) => {
                 : "#3708a2",
           }}
         >
-          {headlineValue > 0 ? headlineValue : <div className="tbc">TBC</div>}
+          {headlineValue > 0 ? headlineValue : <div className="tbc">tbc</div>}
         </div>
         <BarChart
           layout="vertical"
@@ -129,6 +134,14 @@ const StatColumn = ({ title, data2 }) => {
           </Bar>
         </BarChart>
       </FadeIn>
+      <div className={"statBtnWrap " + btnMargin}>
+        <button
+          className="hvr-bounce-to-top bounceBtn statButton"
+          onClick={handleClick}
+        >
+          {headlineValue > 0 ? "RETAKE" : "START"}
+        </button>
+      </div>
     </div>
   );
 };

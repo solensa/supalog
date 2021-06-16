@@ -123,6 +123,7 @@ span {
   margin: 0px auto;
   position: relative;
   max-width: 700px;
+  width: 100%;
 }
 
 /* - Question Items - */
@@ -622,6 +623,7 @@ element {
 .resultColumn {
   float: left;
   width: 170px;
+  position: relative;
 }
 
 .secondRow .resultColumn {
@@ -633,9 +635,67 @@ element {
   position: absolute;
   top: 14px;
 }
+.firstRow {
+  height: 650px;
+}
+/* .btnMargin6 {
+  margin-top: -90px;
+}
+.btnMargin7 {
+  margin-top: -45px;
+}
+.btnMargin8 {
+  margin-top: 0;
+} */
+
+.statBtnWrap {
+  /* margin-top: 50px; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  position: absolute;
+  bottom: 0;
+}
+.statButton {
+  padding-left: 35px !important;
+  padding-right: 35px !important;
+  margin: 0 auto;
+  position: relative;
+  margin-left: 23px;
+}
+.resultColumn {
+  height: 590px;
+}
+
 /* - - Mobile Styles - - */
 
 @media (max-width: 720px) {
+  .statBtnWrap {
+    margin-top: 35px;
+  }
+  .statButton {
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+  }
+
+  .firstRow {
+    height: auto;
+  }
+  .btnMargin6 {
+    margin-top: -105px;
+  }
+  .btnMargin7 {
+    margin-top: -60px;
+  }
+  .btnMargin8 {
+    margin-top: -15px;
+  }
+  .resultsCol1 {
+    padding-bottom: 25px;
+  }
+  .resultsCol2 {
+    padding-bottom: 25px;
+  }
   .quiz {
     padding: 0px 20px;
   }
@@ -698,6 +758,6 @@ element {
 
 @media (max-width: 500px) {
   button.bounceBtn {
-    width: 100%;
+    /* width: 100%; */
   }
 }

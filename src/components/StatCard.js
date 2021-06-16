@@ -1,16 +1,22 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./StatCard.css";
 
-const StatCard = () => {
+const StatCard = ({ data1 }) => {
   // const cardRef = useRef();
+  const [showCard, setShowCard] = useState(false);
+  useEffect(() => {
+    setShowCard(true);
+  }, [data1]);
 
-  // useEffect(() => {
-  //   cardRef.current.setAttribute("transform", "scale(0.5)");
-  // });
+  let avgScore = 0;
+  for (let i = 0; i < data1.length; i++) {
+    avgScore = avgScore + data1[i].value;
+  }
+  avgScore = Math.round(avgScore / data1.length);
 
   return (
     <>
-      <div id="card" className="active">
+      <div id="card" className={showCard ? "active" : ""}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 350">
           <clipPath id="svgPath">
             <path
@@ -22,7 +28,7 @@ const StatCard = () => {
         <div id="card-inner">
           <div id="card-top">
             <div className="info">
-              <div className="value">94</div>
+              <div className="value">{avgScore}</div>
               <div className="position">supa</div>
               <div className="country">
                 <div></div>
@@ -38,19 +44,19 @@ const StatCard = () => {
               <div>
                 <ul>
                   <li>
-                    <span>89</span>
+                    <span>{avgScore}</span>
                     <span>hsw</span>
                   </li>
                   <li>
-                    <span>94</span>
+                    <span>--</span>
                     <span>L&M</span>
                   </li>
                   <li>
-                    <span>81</span>
+                    <span>--</span>
                     <span>qlt</span>
                   </li>
                   <li>
-                    <span>81</span>
+                    <span>--</span>
                     <span>pln</span>
                   </li>
                 </ul>
@@ -58,19 +64,19 @@ const StatCard = () => {
               <div>
                 <ul>
                   <li>
-                    <span>90</span>
+                    <span>--</span>
                     <span>e&d</span>
                   </li>
                   <li>
-                    <span>33</span>
+                    <span>--</span>
                     <span>sus</span>
                   </li>
                   <li>
-                    <span>83</span>
+                    <span>--</span>
                     <span>dig</span>
                   </li>
                   <li>
-                    <span>81</span>
+                    <span>--</span>
                     <span>buu</span>
                   </li>
                 </ul>

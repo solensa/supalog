@@ -5,6 +5,7 @@ import QBank5 from "./components/QBank5";
 import Home from "./components/Home";
 import Results from "./components/Results";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Link to="/hsm">HSM</Link>
         <Link to="/contact">Contact</Link>
       </div> */}
+        <ScrollToTop />
         <Switch>
           <Route exact path="/">
             <Home />
