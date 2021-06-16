@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis } from "recharts";
-import FadeIn from "react-fade-in";
+// import FadeIn from "react-fade-in";
 
 const WIDTH = 170;
 
@@ -81,7 +81,7 @@ const StatColumn = ({ title, data2 }) => {
           )}
         </Pie>
       </PieChart>
-      <FadeIn>
+      <div>
         <div
           className="pieChartText"
           style={{
@@ -133,7 +133,7 @@ const StatColumn = ({ title, data2 }) => {
             ))}
           </Bar>
         </BarChart>
-      </FadeIn>
+      </div>
       <div className={"statBtnWrap " + btnMargin}>
         <button
           className="hvr-bounce-to-top bounceBtn statButton"
