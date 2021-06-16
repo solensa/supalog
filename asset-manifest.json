@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/supalog/static/css/main.e13d80fa.chunk.css",
-    "main.js": "/supalog/static/js/main.faf99e31.chunk.js",
-    "main.js.map": "/supalog/static/js/main.faf99e31.chunk.js.map",
-    "runtime-main.js": "/supalog/static/js/runtime-main.08f345d1.js",
-    "runtime-main.js.map": "/supalog/static/js/runtime-main.08f345d1.js.map",
-    "static/js/2.a24a522d.chunk.js": "/supalog/static/js/2.a24a522d.chunk.js",
-    "static/js/2.a24a522d.chunk.js.map": "/supalog/static/js/2.a24a522d.chunk.js.map",
-    "static/js/3.f78d8282.chunk.js": "/supalog/static/js/3.f78d8282.chunk.js",
-    "static/js/3.f78d8282.chunk.js.map": "/supalog/static/js/3.f78d8282.chunk.js.map",
+    "main.css": "/supalog/static/css/main.a93f174e.chunk.css",
+    "main.js": "/supalog/static/js/main.dfa37661.chunk.js",
+    "main.js.map": "/supalog/static/js/main.dfa37661.chunk.js.map",
+    "runtime-main.js": "/supalog/static/js/runtime-main.ab1b1637.js",
+    "runtime-main.js.map": "/supalog/static/js/runtime-main.ab1b1637.js.map",
+    "static/js/2.7f6991af.chunk.js": "/supalog/static/js/2.7f6991af.chunk.js",
+    "static/js/2.7f6991af.chunk.js.map": "/supalog/static/js/2.7f6991af.chunk.js.map",
+    "static/js/3.3a070aac.chunk.js": "/supalog/static/js/3.3a070aac.chunk.js",
+    "static/js/3.3a070aac.chunk.js.map": "/supalog/static/js/3.3a070aac.chunk.js.map",
     "index.html": "/supalog/index.html",
-    "static/css/main.e13d80fa.chunk.css.map": "/supalog/static/css/main.e13d80fa.chunk.css.map",
-    "static/js/2.a24a522d.chunk.js.LICENSE.txt": "/supalog/static/js/2.a24a522d.chunk.js.LICENSE.txt",
+    "static/css/main.a93f174e.chunk.css.map": "/supalog/static/css/main.a93f174e.chunk.css.map",
+    "static/js/2.7f6991af.chunk.js.LICENSE.txt": "/supalog/static/js/2.7f6991af.chunk.js.LICENSE.txt",
     "static/media/index.css": "/supalog/static/media/bg.f517f15d.png",
     "static/media/log.2b5954ae.png": "/supalog/static/media/log.2b5954ae.png",
     "static/media/StatCard.css": "/supalog/static/media/purple-cw2.dc51d743.png",
     "static/media/zilla.9cccacfa.png": "/supalog/static/media/zilla.9cccacfa.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.08f345d1.js",
-    "static/js/2.a24a522d.chunk.js",
-    "static/css/main.e13d80fa.chunk.css",
-    "static/js/main.faf99e31.chunk.js"
+    "static/js/runtime-main.ab1b1637.js",
+    "static/js/2.7f6991af.chunk.js",
+    "static/css/main.a93f174e.chunk.css",
+    "static/js/main.dfa37661.chunk.js"
   ]
 }
