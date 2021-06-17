@@ -265,7 +265,7 @@ const Results = () => {
     <>
       <div className="cardBG">
         <div className="headlineCard wideClear">
-          <StatCard data1={data}></StatCard>
+          <StatCard data1={data} show={true}></StatCard>
         </div>
       </div>
       <div className="firstRow">

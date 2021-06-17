@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./StatCard.css";
 
-const StatCard = ({ data1 }) => {
+const StatCard = ({ data1, show }) => {
   // const cardRef = useRef();
   const [showCard, setShowCard] = useState(false);
   useEffect(() => {
-    setShowCard(true);
-  }, [data1]);
+    setTimeout(function () {
+      setShowCard(true);
+    }, 800);
+  }, [show]);
 
   let avgScore = 0;
   for (let i = 0; i < data1.length; i++) {

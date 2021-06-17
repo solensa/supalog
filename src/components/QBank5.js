@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, createRef } from "react";
 import Question from "./Question";
 import { useHistory } from "react-router-dom";
 import log from "../images/log.png";
@@ -46,45 +46,31 @@ const qb5QuesArr = [
 ];
 
 const QBank5 = () => {
-  // const qb5Ref1 = useRef(null);
-
+  const [qb5RefsArr, setQb5Refs] = React.useState([]);
   let results5 = [];
-  let refs5 = [];
   for (var i = 0; i < 39; i++) {
     results5.push(0);
   }
 
-  const updateArray = (index, value, fwdRef) => {
+  useEffect(() => {
+    // add or remove refs
+    setQb5Refs((qb5RefsArr) =>
+      Array(qb5QuesArr.length)
+        .fill()
+        .map((_, i) => qb5RefsArr[i] || createRef())
+    );
+  }, [qb5QuesArr.length]);
+
+  const updateArray = (index, value) => {
     results5[index] = value;
     console.log(results5);
-    fwdRef.current.scrollIntoView({ behavior: "smooth" });
+    if (index < qb5RefsArr.length - 1) {
+      qb5RefsArr[index + 1].current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
   };
-
-  // $("input[type='radio']").change(function (e) {
-  //   let answer = e.currentTarget.id.slice(-1);
-  //   let boxNum = Number(e.currentTarget.name.match(/\d+/)[0]) + 1;
-
-  //   resultsArr[boxNum - 2] = answer;
-
-  //   // console.log(resultsArr);
-
-  //   let box = "#box" + boxNum;
-  //   if (box == "#box13") {
-  //     $("html,body").animate(
-  //       {
-  //         scrollTop: $("#submit1").offset().top - 100,
-  //       },
-  //       400
-  //     );
-  //   } else {
-  //     $("html,body").animate(
-  //       {
-  //         scrollTop: $(box).offset().top - 100,
-  //       },
-  //       400
-  //     );
-  //   }
-  // });
 
   const history = useHistory();
   const handleClick = () => {
@@ -97,8 +83,20 @@ const QBank5 = () => {
 
   return (
     <div id="appBox" className="panel wideClear active">
-      <h1>Safety</h1>
-      <Question id="b5q1" str={qb5QuesArr[0]} updateArray={updateArray} />
+      <div className="quizHeader">
+        <h1 className="QBank">Safety</h1>
+      </div>
+      {qb5RefsArr.map((el, i) =>
+        i < 17 ? (
+          <Question
+            passRef={qb5RefsArr[i]}
+            id={"b5q" + (parseInt(i) + 1)}
+            str={qb5QuesArr[i]}
+            updateArray={updateArray}
+          />
+        ) : null
+      )}
+      {/* <Question id="b5q1" str={qb5QuesArr[0]} updateArray={updateArray} passRef={}/>
       <Question id="b5q2" str={qb5QuesArr[1]} updateArray={updateArray} />
       <Question id="b5q3" str={qb5QuesArr[2]} updateArray={updateArray} />
       <Question id="b5q4" str={qb5QuesArr[3]} updateArray={updateArray} />
@@ -114,10 +112,23 @@ const QBank5 = () => {
       <Question id="b5q14" str={qb5QuesArr[13]} updateArray={updateArray} />
       <Question id="b5q15" str={qb5QuesArr[14]} updateArray={updateArray} />
       <Question id="b5q16" str={qb5QuesArr[15]} updateArray={updateArray} />
-      <Question id="b5q17" str={qb5QuesArr[16]} updateArray={updateArray} />
-      <img className="supalogLogo" src={log} />
-      <h1>Occupational health</h1>
-      <Question id="b5q18" str={qb5QuesArr[17]} updateArray={updateArray} />
+      <Question id="b5q17" str={qb5QuesArr[16]} updateArray={updateArray} /> */}
+
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} />
+        <h1 className="QBank">Occupational health</h1>
+      </div>
+      {qb5RefsArr.map((el, i) =>
+        i >= 17 && i < 27 ? (
+          <Question
+            passRef={qb5RefsArr[i]}
+            id={"b5q" + (parseInt(i) + 1)}
+            str={qb5QuesArr[i]}
+            updateArray={updateArray}
+          />
+        ) : null
+      )}
+      {/* <Question id="b5q18" str={qb5QuesArr[17]} updateArray={updateArray} />
       <Question id="b5q19" str={qb5QuesArr[18]} updateArray={updateArray} />
       <Question id="b5q20" str={qb5QuesArr[19]} updateArray={updateArray} />
       <Question id="b5q21" str={qb5QuesArr[20]} updateArray={updateArray} />
@@ -126,23 +137,52 @@ const QBank5 = () => {
       <Question id="b5q24" str={qb5QuesArr[23]} updateArray={updateArray} />
       <Question id="b5q25" str={qb5QuesArr[24]} updateArray={updateArray} />
       <Question id="b5q26" str={qb5QuesArr[25]} updateArray={updateArray} />
-      <Question id="b5q27" str={qb5QuesArr[26]} updateArray={updateArray} />
-      <img className="supalogLogo" src={log} />
-      <h1>H&S Risk Assessment</h1>
-      <Question id="b5q28" str={qb5QuesArr[27]} updateArray={updateArray} />
+      <Question id="b5q27" str={qb5QuesArr[26]} updateArray={updateArray} /> */}
+
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} />
+        <h1 className="QBank">H&S Risk Assessment</h1>
+      </div>
+
+      {qb5RefsArr.map((el, i) =>
+        i >= 27 && i < 35 ? (
+          <Question
+            passRef={qb5RefsArr[i]}
+            id={"b5q" + (parseInt(i) + 1)}
+            str={qb5QuesArr[i]}
+            updateArray={updateArray}
+          />
+        ) : null
+      )}
+
+      {/* <Question id="b5q28" str={qb5QuesArr[27]} updateArray={updateArray} />
       <Question id="b5q29" str={qb5QuesArr[28]} updateArray={updateArray} />
       <Question id="b5q30" str={qb5QuesArr[29]} updateArray={updateArray} />
       <Question id="b5q31" str={qb5QuesArr[30]} updateArray={updateArray} />
       <Question id="b5q32" str={qb5QuesArr[31]} updateArray={updateArray} />
       <Question id="b5q33" str={qb5QuesArr[32]} updateArray={updateArray} />
       <Question id="b5q34" str={qb5QuesArr[33]} updateArray={updateArray} />
-      <Question id="b5q35" str={qb5QuesArr[34]} updateArray={updateArray} />
-      <img className="supalogLogo" src={log} />
-      <h1>Mental Health & Wellbeing</h1>
-      <Question id="b5q36" str={qb5QuesArr[35]} updateArray={updateArray} />
+      <Question id="b5q35" str={qb5QuesArr[34]} updateArray={updateArray} /> */}
+
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} />
+        <h1 className="QBank">Mental Health & Wellbeing</h1>
+      </div>
+
+      {qb5RefsArr.map((el, i) =>
+        i >= 35 && i < 39 ? (
+          <Question
+            passRef={qb5RefsArr[i]}
+            id={"b5q" + (parseInt(i) + 1)}
+            str={qb5QuesArr[i]}
+            updateArray={updateArray}
+          />
+        ) : null
+      )}
+      {/* <Question id="b5q36" str={qb5QuesArr[35]} updateArray={updateArray} />
       <Question id="b5q37" str={qb5QuesArr[36]} updateArray={updateArray} />
       <Question id="b5q38" str={qb5QuesArr[37]} updateArray={updateArray} />
-      <Question id="b5q39" str={qb5QuesArr[38]} updateArray={updateArray} />
+      <Question id="b5q39" str={qb5QuesArr[38]} updateArray={updateArray} /> */}
 
       <button
         id="send1"

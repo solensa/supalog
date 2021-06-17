@@ -1,23 +1,23 @@
 import React, { useRef } from "react";
 
-const Question = ({ str, id, updateArray, fwdRef }) => {
+const Question = ({ str, id, updateArray, passRef }) => {
   const box = "box" + id;
   const name = "radio" + id;
   const qa = id + "a";
   const qb = id + "b";
   const qc = id + "c";
   const qd = id + "d";
-  const questionRef = useRef(null);
+  // const questionRef = useRef(null);
 
   const onChangeValue = (e, result) => {
-    // console.log(result);
     let arr = id.split("q");
     let index = arr[1] - 1;
-    updateArray(index, result, questionRef);
+    // console.log(index);
+    updateArray(index, result);
   };
 
   return (
-    <div className="quizItem wideClear transition" id={box} ref={questionRef}>
+    <div className="quizItem wideClear transition" id={box} ref={passRef}>
       <h2 className="transition">{str}</h2>
 
       <div className="wideClear">
