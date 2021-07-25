@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import QBank5 from "./components/QBank5";
 import Home from "./components/Home";
 import Results from "./components/Results";

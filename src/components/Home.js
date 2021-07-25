@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div id="appBox" className="panel wideClear active">
-      <div class="quizHeader">
+      <div className="quizHeader">
         <h1>Supervisor Experience Log</h1>
         <p>
           Assume you are the leader in each of the following twelve situations.
@@ -37,25 +37,6 @@ const Home = () => {
       >
         Start
       </button>
-      {/* <div className="quizItem wideClear transition" id="resultsBox">
-        <h2>Supervisor Experience Log - Beta</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <button
-          id="send1"
-          className="hvr-bounce-to-top bounceBtn"
-          onClick={handleClick}
-        >
-          Start
-        </button>
-      </div> */}
     </div>
   );
 };

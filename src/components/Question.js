@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const Question = ({ str, id, updateArray, passRef }) => {
+const Question = ({ str, id, updateArray, passRef, tickAns }) => {
   const box = "box" + id;
   const name = "radio" + id;
   const qa = id + "a";
@@ -8,13 +8,17 @@ const Question = ({ str, id, updateArray, passRef }) => {
   const qc = id + "c";
   const qd = id + "d";
   // const questionRef = useRef(null);
+  const [selectedAns, setSelectedAns] = React.useState(0);
 
   const onChangeValue = (e, result) => {
     let arr = id.split("q");
     let index = arr[1] - 1;
-    // console.log(index);
+    // console.log(e.target.value);
+    setSelectedAns(result + 1);
     updateArray(index, result);
   };
+
+  console.log(tickAns);
 
   return (
     <div className="quizItem wideClear transition" id={box} ref={passRef}>
@@ -26,11 +30,9 @@ const Question = ({ str, id, updateArray, passRef }) => {
           name={name}
           id={qa}
           onChange={(e) => onChangeValue(e, 0)}
+          checked={tickAns == 1 || selectedAns == 1 ? true : false}
         />
-        <label for={qa}>
-          Do not do it / don't want to do / encourages others not to do / at a
-          junior level.
-        </label>
+        <label htmlFor={qa}>Do not do it or at a junior level.</label>
         <br />
       </div>
       <div className="wideClear">
@@ -39,8 +41,9 @@ const Question = ({ str, id, updateArray, passRef }) => {
           name={name}
           id={qb}
           onChange={(e) => onChangeValue(e, 1)}
+          checked={tickAns == 2 || selectedAns == 2 ? true : false}
         />
-        <label for={qb}>
+        <label htmlFor={qb}>
           Do it sometimes, but not always to the correct standard.
         </label>
         <br />
@@ -51,8 +54,9 @@ const Question = ({ str, id, updateArray, passRef }) => {
           name={name}
           id={qc}
           onChange={(e) => onChangeValue(e, 2)}
+          checked={tickAns == 3 || selectedAns == 3 ? true : false}
         />
-        <label for={qc}>Do it all the time to the correct standard.</label>
+        <label htmlFor={qc}>Do it all the time to the correct standard.</label>
         <br />
       </div>
       <div className="wideClear">
@@ -61,10 +65,11 @@ const Question = ({ str, id, updateArray, passRef }) => {
           name={name}
           id={qd}
           onChange={(e) => onChangeValue(e, 3)}
+          checked={tickAns == 4 || selectedAns == 4 ? true : false}
         />
-        <label for={qd}>
-          Do it all the time to the correct standard and ensure others are doing
-          the same (via mentoring / creating systems for people to use etc.).
+        <label htmlFor={qd}>
+          Do it all the time to the correct standard and ensure others do the
+          same via mentoring / creating systems for people to use etc.
         </label>
         <br />
       </div>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import StatCard from "./StatCard";
 import StatColumn from "./StatColumn";
+import { convertToBase4, padWithZeroes } from "./Utility.js";
+import { qb5QuesArr } from "./Data.js";
+
 const Results = () => {
   const [data, setData] = useState([
     {
@@ -216,7 +219,8 @@ const Results = () => {
   useEffect(() => {
     const windowUrl = window.location.href;
     let arr = windowUrl.split("=");
-    let num = arr[1];
+    let num = convertToBase4(arr[1]);
+    num = padWithZeroes(num, qb5QuesArr.length);
     // console.log(num);
 
     let sect1 = 0;
@@ -239,7 +243,7 @@ const Results = () => {
     let dataVal2 = Math.round((33.33 * sect2) / 10);
     let dataVal3 = Math.round((33.33 * sect3) / 8);
     let dataVal4 = Math.round((33.33 * sect4) / 4);
-    console.log(data);
+    // console.log(data);
     // console.log(Math.round((33.33 * sect4) / 4));
     setData([
       {

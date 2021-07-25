@@ -41,7 +41,18 @@ const StatColumn = ({ title, data2 }) => {
     );
   };
 
-  const handleClick = () => {
+  const startClick = () => {
+    console.log("start click");
+    // history.push("/results");
+  };
+
+  const validateClick = () => {
+    console.log("validate click");
+    // history.push("/results");
+  };
+
+  const retakeClick = () => {
+    console.log("retake click");
     // history.push("/results");
   };
 
@@ -136,12 +147,22 @@ const StatColumn = ({ title, data2 }) => {
       </div>
       <div className={"statBtnWrap " + btnMargin}>
         <button
-          className="hvr-bounce-to-top bounceBtn statButton"
-          onClick={handleClick}
+          className="hvr-bounce-to-top bounceBtn statButton statBtn2"
+          onClick={headlineValue > 0 ? retakeClick : startClick}
         >
           {headlineValue > 0 ? "RETAKE" : "START"}
         </button>
       </div>
+      {headlineValue > 0 ? (
+        <div className={"statBtnWrap " + btnMargin}>
+          <button
+            className="hvr-bounce-to-top bounceBtn statButton"
+            onClick={validateClick}
+          >
+            Validate
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };
