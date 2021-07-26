@@ -57,14 +57,17 @@ const StatColumn = ({ title, data2, id }) => {
   const validateClick = () => {
     // console.log("validate click");
     let str =
-      "http://localhost:3000/supalog#/hsm?" + returnUrlStrForValidation(id);
+      "http://localhost:3000/supalog#/hsm?VALIDATE=" +
+      id +
+      "&" +
+      returnUrlStr();
     console.log(str);
     sendEmailToLm(str);
   };
 
   const updateClick = () => {
     // console.log("update click");
-    let str = "/hsm?" + returnUrlStr();
+    let str = "/hsm?UPDATE=" + id + "&" + returnUrlStr();
     // console.log(str);
     history.push(str);
   };

@@ -4,11 +4,13 @@ import { useHistory } from "react-router-dom";
 import log from "../images/log.png";
 import { convertToBase62 } from "./Utility.js";
 import { qb5QuesArr } from "./Data.js";
-import { returnUrlData } from "./Utility.js";
+import { returnUrlData, breakUrlIntoObj, getKeyByValue } from "./Utility.js";
 
 const QBank5 = () => {
   const [qb5RefsArr, setQb5Refs] = useState([]);
   const [results5, setResults5] = useState([]);
+  const [isBeingUpdated, setIsBeingUpdated] = useState(false);
+  const [qBankBeingValidated, setQBankBeingValidated] = useState(-1);
   // for (var i = 0; i < qb5QuesArr.length; i++) {
   //   results5.push(-1);
   // }
@@ -23,11 +25,14 @@ const QBank5 = () => {
   }, [qb5QuesArr.length]);
 
   useEffect(() => {
-    if (!window.location.hash.includes("=")) {
-      setResults5(false);
-    } else {
-      setResults5(returnUrlData(5));
+    if (window.location.hash.includes("VALIDATE")) {
+      // results being validated
+      let paramsObj = breakUrlIntoObj();
+      setQBankBeingValidated(paramsObj["VALIDATE"]);
+    } else if (window.location.hash.includes("UPDATE")) {
+      setIsBeingUpdated(true);
     }
+    setResults5(returnUrlData(5));
   }, []);
 
   // useEffect(() => {
@@ -50,10 +55,18 @@ const QBank5 = () => {
   const history = useHistory();
   const handleClick = () => {
     let x = convertToBase62(results5.join(""));
-    history.push({
-      pathname: "/results",
-      search: "?qb5=" + x,
-    });
+    if (qBankBeingValidated > 0) {
+      let paramsObj = breakUrlIntoObj();
+      paramsObj["qa" + qBankBeingValidated] = x;
+      paramsObj["FINALISE"] = qBankBeingValidated;
+      delete paramsObj["VALIDATE"];
+      console.log(paramsObj);
+    } else {
+      history.push({
+        pathname: "/results",
+        search: "?qb5=" + x,
+      });
+    }
   };
 
   return (
@@ -69,7 +82,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
-            tickAns={results5[i] + 1}
+            tickAns={isBeingUpdated ? results5[i] + 1 : null}
           />
         ) : null
       )}
@@ -85,7 +98,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
-            tickAns={results5[i] + 1}
+            tickAns={isBeingUpdated ? results5[i] + 1 : null}
           />
         ) : null
       )}
@@ -102,7 +115,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
-            tickAns={results5[i] + 1}
+            tickAns={isBeingUpdated ? results5[i] + 1 : null}
           />
         ) : null
       )}
@@ -119,7 +132,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
-            tickAns={results5[i] + 1}
+            tickAns={isBeingUpdated ? results5[i] + 1 : null}
           />
         ) : null
       )}

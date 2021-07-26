@@ -89,12 +89,7 @@ export const returnUrlData = (dataNum) => {
   if (!window.location.hash.includes("=")) {
     return results;
   }
-  let hash = window.location.hash.substr(1).split("?")[1];
-  let paramsObj = hash.split("&").reduce(function (res, item) {
-    let parts = item.split("=");
-    res[parts[0]] = parts[1];
-    return res;
-  }, {});
+  let paramsObj = breakUrlIntoObj();
 
   let num = convertToBase4(paramsObj["qb" + dataNum]);
   num = padWithZeroes(num, results.length);
@@ -121,17 +116,22 @@ export const returnUrlStr = () => {
   return hash;
 };
 
-export const returnUrlStrForValidation = (id) => {
-  let hash = window.location.hash.substr(1).split("?")[1];
-  let paramsObj = hash.split("&").reduce(function (res, item) {
+// export const returnUrlStrForValidation = (id) => {
+//   let paramsObj = breakUrlIntoObj();
+//   paramsObj["qa" + id] = "~VAL";
+//   // console.log(serialize(paramsObj));
+
+//   return serialize(paramsObj);
+// };
+
+export const breakUrlIntoObj = () => {
+  let urlStr = window.location.hash.substr(1).split("?")[1];
+  let paramsObj = urlStr.split("&").reduce(function (res, item) {
     let parts = item.split("=");
     res[parts[0]] = parts[1];
     return res;
   }, {});
-  paramsObj["qa" + id] = "~VAL";
-  // console.log(serialize(paramsObj));
-
-  return serialize(paramsObj);
+  return paramsObj;
 };
 
 const serialize = (obj) => {
@@ -157,7 +157,12 @@ export const sendEmailToLm = (url) => {
   var titleStr = "Validate my Supervisor Exp. Log results";
   var bodyStr = "Instructions: ";
   bodyStr += encodeURIComponent(url);
-  window.open(
-    "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
-  );
+  // window.open(
+  //   "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
+  // );
+  alert(bodyStr);
 };
+
+// export const getKeyByValue = (object, value) => {
+//   return Object.keys(object).find((key) => object[key] === value);
+// };
