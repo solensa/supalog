@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis } from "recharts";
+import {
+  returnUrlStr,
+  returnUrlStrForValidation,
+  sendEmailToLm,
+} from "./Utility.js";
+import { useHistory } from "react-router-dom";
 // import FadeIn from "react-fade-in";
 
 const WIDTH = 170;
 
-const StatColumn = ({ title, data2 }) => {
+const StatColumn = ({ title, data2, id }) => {
+  const history = useHistory();
+
   let HEIGHT = data2.length * 45.875;
   let btnMargin = "btnMargin" + data2.length;
   if (data2.length >= 6) {
@@ -47,13 +55,18 @@ const StatColumn = ({ title, data2 }) => {
   };
 
   const validateClick = () => {
-    console.log("validate click");
-    // history.push("/results");
+    // console.log("validate click");
+    let str =
+      "http://localhost:3000/supalog#/hsm?" + returnUrlStrForValidation(id);
+    console.log(str);
+    sendEmailToLm(str);
   };
 
-  const retakeClick = () => {
-    console.log("retake click");
-    // history.push("/results");
+  const updateClick = () => {
+    // console.log("update click");
+    let str = "/hsm?" + returnUrlStr();
+    // console.log(str);
+    history.push(str);
   };
 
   return (
@@ -148,9 +161,9 @@ const StatColumn = ({ title, data2 }) => {
       <div className={"statBtnWrap " + btnMargin}>
         <button
           className="hvr-bounce-to-top bounceBtn statButton statBtn2"
-          onClick={headlineValue > 0 ? retakeClick : startClick}
+          onClick={headlineValue > 0 ? updateClick : startClick}
         >
-          {headlineValue > 0 ? "RETAKE" : "START"}
+          {headlineValue > 0 ? "UPDATE" : "START"}
         </button>
       </div>
       {headlineValue > 0 ? (

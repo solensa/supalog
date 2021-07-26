@@ -1,6 +1,8 @@
+import { qb5QuesArr } from "./Data.js";
+
 const convertBase = (str, fromBase, toBase) => {
   const DIGITS =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/";
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const add = (x, y, base) => {
     let z = [];
@@ -78,6 +80,84 @@ export const padWithZeroes = (number, length) => {
   while (my_string.length < length) {
     my_string = "0" + my_string;
   }
-
   return my_string;
+};
+
+export const returnUrlData = (dataNum) => {
+  let results = returnEmptyArrFor(dataNum);
+
+  if (!window.location.hash.includes("=")) {
+    return results;
+  }
+  let hash = window.location.hash.substr(1).split("?")[1];
+  let paramsObj = hash.split("&").reduce(function (res, item) {
+    let parts = item.split("=");
+    res[parts[0]] = parts[1];
+    return res;
+  }, {});
+
+  let num = convertToBase4(paramsObj["qb" + dataNum]);
+  num = padWithZeroes(num, results.length);
+
+  for (var i = 0; i < results.length; i++) {
+    results[i] = parseInt(num[i]);
+  }
+  return results;
+};
+
+// need to manually give each scenario... as eval from the import of qb5QuesArr doesn't work
+const returnEmptyArrFor = (qBankNum) => {
+  let results = [];
+  if (qBankNum === 5) {
+    for (let i = 0; i < qb5QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  return results;
+};
+
+export const returnUrlStr = () => {
+  let hash = window.location.hash.substr(1).split("?")[1];
+  return hash;
+};
+
+export const returnUrlStrForValidation = (id) => {
+  let hash = window.location.hash.substr(1).split("?")[1];
+  let paramsObj = hash.split("&").reduce(function (res, item) {
+    let parts = item.split("=");
+    res[parts[0]] = parts[1];
+    return res;
+  }, {});
+  paramsObj["qa" + id] = "~VAL";
+  // console.log(serialize(paramsObj));
+
+  return serialize(paramsObj);
+};
+
+const serialize = (obj) => {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+};
+
+export const sendEmailToLm = (url) => {
+  // var outlookApp = new ActiveXObject("Outlook.Application");
+  // var nameSpace = outlookApp.getNameSpace("MAPI");
+  // mailFolder = nameSpace.getDefaultFolder(6);
+  // mailItem = mailFolder.Items.add('IPM.Note.FormA');
+  // mailItem.Subject = eSubject;
+  // mailItem.To = "me@me.com";
+  // mailItem.HTMLBody = eBody;
+  // mailItem.display(0);
+  console.log(url);
+
+  var titleStr = "Validate my Supervisor Exp. Log results";
+  var bodyStr = "Instructions: ";
+  bodyStr += encodeURIComponent(url);
+  window.open(
+    "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
+  );
 };

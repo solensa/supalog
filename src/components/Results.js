@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StatCard from "./StatCard";
 import StatColumn from "./StatColumn";
-import { convertToBase4, padWithZeroes } from "./Utility.js";
+import { returnUrlData } from "./Utility.js";
 import { qb5QuesArr } from "./Data.js";
 
 const Results = () => {
@@ -217,12 +217,8 @@ const Results = () => {
   ];
 
   useEffect(() => {
-    const windowUrl = window.location.href;
-    let arr = windowUrl.split("=");
-    let num = convertToBase4(arr[1]);
-    num = padWithZeroes(num, qb5QuesArr.length);
-    // console.log(num);
-
+    let num = returnUrlData(5);
+    console.log(num);
     let sect1 = 0;
     let sect2 = 0;
     let sect3 = 0;
@@ -274,22 +270,22 @@ const Results = () => {
       </div>
       <div className="firstRow">
         <div className="resultsCol1">
-          <StatColumn title="Health, Safety & Wellbeing" data2={data} />
-          <StatColumn title="Leadership & Mgt." data2={data2} />
+          <StatColumn title="Health, Safety & Wellbeing" data2={data} id={5} />
+          <StatColumn title="Leadership & Mgt." data2={data2} id={1} />
         </div>
         <div className="resultsCol2">
-          <StatColumn title="Quality" data2={data3} />
-          <StatColumn title="Planning" data2={data4} />
+          <StatColumn title="Quality" data2={data3} id={2} />
+          <StatColumn title="Planning" data2={data4} id={3} />
         </div>
       </div>
       <div className="secondRow">
         <div className="resultsCol1">
-          <StatColumn title="Eng. & Design" data2={data5} />
-          <StatColumn title="Sustainability" data2={data6} />
+          <StatColumn title="Eng. & Design" data2={data5} id={4} />
+          <StatColumn title="Sustainability" data2={data6} id={6} />
         </div>
         <div className="resultsCol2">
-          <StatColumn title="Digital" data2={data7} />
-          <StatColumn title="Business Understanding" data2={data8} />
+          <StatColumn title="Digital" data2={data7} id={7} />
+          <StatColumn title="Business Understanding" data2={data8} id={8} />
         </div>
       </div>
       <div className="spacer"></div>

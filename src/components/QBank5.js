@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 import log from "../images/log.png";
 import { convertToBase62 } from "./Utility.js";
 import { qb5QuesArr } from "./Data.js";
-import { convertToBase4, padWithZeroes } from "./Utility.js";
-import Results from "./Results";
+import { returnUrlData } from "./Utility.js";
 
 const QBank5 = () => {
   const [qb5RefsArr, setQb5Refs] = useState([]);
@@ -24,23 +23,16 @@ const QBank5 = () => {
   }, [qb5QuesArr.length]);
 
   useEffect(() => {
-    let results = [];
-    for (var i = 0; i < qb5QuesArr.length; i++) {
-      results.push(-1);
+    if (!window.location.hash.includes("=")) {
+      setResults5(false);
+    } else {
+      setResults5(returnUrlData(5));
     }
-    const windowUrl = window.location.href;
-    if (windowUrl.includes("=")) {
-      let arr = windowUrl.split("=");
-      let num = convertToBase4(arr[1]);
-      num = padWithZeroes(num, qb5QuesArr.length);
-      console.log(num);
-      for (var i = 0; i < qb5QuesArr.length; i++) {
-        results[i] = parseInt(num[i]);
-      }
-      console.log(results5);
-    }
-    setResults5(results);
   }, []);
+
+  // useEffect(() => {
+  //   console.log(results5);
+  // }, [results5]);
 
   const updateArray = (index, value) => {
     let results = results5;
@@ -77,7 +69,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
-            tickAns={results5[i]}
+            tickAns={results5[i] + 1}
           />
         ) : null
       )}
@@ -93,6 +85,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
+            tickAns={results5[i] + 1}
           />
         ) : null
       )}
@@ -109,6 +102,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
+            tickAns={results5[i] + 1}
           />
         ) : null
       )}
@@ -125,6 +119,7 @@ const QBank5 = () => {
             str={qb5QuesArr[i]}
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
+            tickAns={results5[i] + 1}
           />
         ) : null
       )}

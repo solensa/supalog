@@ -13,21 +13,22 @@ const Home = () => {
       <div className="quizHeader">
         <h1>Supervisor Experience Log</h1>
         <p>
-          Assume you are the leader in each of the following twelve situations.
-          Read each item carefully and think about what you would do in each.
-          Select the option you think would most closely describe your behaviour
-          in the situation presented.
+          Welcome to the Supervisor Experience Log - a new digitised version
+          that is being developed.
         </p>
         <p>
-          For each situation, think of yourself in your leadership role at work
-          / on site. For example, suppose an item mentions team members, then
-          think about your staff as your team members
+          You will be asked to answer questions from to the Supervisor
+          competency framework which will give you a score. This exercise will
+          then be repeated at the end of the supervisor programme for a
+          comparison.
         </p>
         <p>
-          <strong>Do not change</strong> your situation from one item to
-          another. You can complete the questionnaire several times, if you wish
-          to examine your leadership behaviour in as many different settings or
-          situations as you think helpful.
+          <strong>Remember to save your results!</strong>
+        </p>
+        <p>
+          Press the save button on the results page. This will send the unique
+          URL to an email of your choice. Failing to do so will result in your
+          answers being lost.
         </p>
       </div>
       <button
