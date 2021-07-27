@@ -2,15 +2,28 @@ import React, { useState, useEffect, createRef } from "react";
 import Question from "./Question";
 import { useHistory } from "react-router-dom";
 import log from "../images/log.png";
-import { convertToBase62 } from "./Utility.js";
+import {
+  convertToBase4,
+  convertToBase62,
+  returnEmptyArrFor,
+} from "./Utility.js";
 import { qb5QuesArr } from "./Data.js";
-import { returnUrlData, breakUrlIntoObj, getKeyByValue } from "./Utility.js";
+import {
+  returnUrlData,
+  breakUrlIntoObj,
+  convertObjToUrl,
+  sendEmailToSupervisor,
+  padWithZeroes,
+} from "./Utility.js";
 
 const QBank5 = () => {
   const [qb5RefsArr, setQb5Refs] = useState([]);
   const [results5, setResults5] = useState([]);
   const [isBeingUpdated, setIsBeingUpdated] = useState(false);
   const [qBankBeingValidated, setQBankBeingValidated] = useState(-1);
+  const [qBankBeingFinalised, setQBankBeingFinalised] = useState(-1);
+  const [lnMgrTickArr, setLnMgrTickArr] = useState([]);
+  const [spvsrTickArr, setSpvsrTickArr] = useState([]);
   // for (var i = 0; i < qb5QuesArr.length; i++) {
   //   results5.push(-1);
   // }
@@ -31,6 +44,19 @@ const QBank5 = () => {
       setQBankBeingValidated(paramsObj["VALIDATE"]);
     } else if (window.location.hash.includes("UPDATE")) {
       setIsBeingUpdated(true);
+    } else if (window.location.hash.includes("FINALISE")) {
+      // results being finalised between LM & Supervisor
+      let paramsObj = breakUrlIntoObj();
+      let dataNum = paramsObj["FINALISE"];
+      let results = returnEmptyArrFor(dataNum);
+      let qaResults = convertToBase4(paramsObj["qa" + dataNum]);
+      let qbResults = convertToBase4(paramsObj["qb" + dataNum]);
+      qaResults = padWithZeroes(qaResults, results.length);
+      qbResults = padWithZeroes(qbResults, results.length);
+      console.log(qaResults);
+      setLnMgrTickArr(qaResults);
+      setSpvsrTickArr(qbResults);
+      setQBankBeingFinalised(dataNum);
     }
     setResults5(returnUrlData(5));
   }, []);
@@ -60,7 +86,9 @@ const QBank5 = () => {
       paramsObj["qa" + qBankBeingValidated] = x;
       paramsObj["FINALISE"] = qBankBeingValidated;
       delete paramsObj["VALIDATE"];
-      console.log(paramsObj);
+      sendEmailToSupervisor(
+        "http://localhost:3000/supalog#/hsm?" + convertObjToUrl(paramsObj)
+      );
     } else {
       history.push({
         pathname: "/results",
@@ -71,6 +99,13 @@ const QBank5 = () => {
 
   return (
     <div id="appBox" className="panel wideClear active">
+      <div className="quizHeader">
+        <h1 className="QBank">
+          {isBeingUpdated ? "Updating your results" : null}
+          {qBankBeingValidated > 0 ? "Validating Supervisors Results" : null}
+        </h1>
+      </div>
+
       <div className="quizHeader">
         <h1 className="QBank">Safety</h1>
       </div>
@@ -83,6 +118,8 @@ const QBank5 = () => {
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
             tickAns={isBeingUpdated ? results5[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
           />
         ) : null
       )}

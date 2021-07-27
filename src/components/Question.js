@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const Question = ({ str, id, updateArray, passRef, tickAns }) => {
+const Question = ({
+  str,
+  id,
+  updateArray,
+  passRef,
+  tickAns,
+  lnMgrTick,
+  spvsrTick,
+}) => {
   const box = "box" + id;
   const name = "radio" + id;
   const qa = id + "a";
@@ -35,7 +43,11 @@ const Question = ({ str, id, updateArray, passRef, tickAns }) => {
           onChange={(e) => onChangeValue(e, 0)}
           checked={selectedAns == 1 ? true : false}
         />
-        <label htmlFor={qa}>Do not do it or at a junior level.</label>
+        <label htmlFor={qa}>
+          Do not do it or at a junior level.
+          {lnMgrTick === 1 ? <div className="labelMark">Spvsr.</div> : null}
+          {spvsrTick === 1 ? <div className="labelMark2">Ln Mgr.</div> : null}
+        </label>
         <br />
       </div>
       <div className="wideClear">
@@ -48,6 +60,8 @@ const Question = ({ str, id, updateArray, passRef, tickAns }) => {
         />
         <label htmlFor={qb}>
           Do it sometimes, but not always to the correct standard.
+          {lnMgrTick === 2 ? <div className="labelMark">Spvsr.</div> : null}
+          {spvsrTick === 2 ? <div className="labelMark2">Ln Mgr.</div> : null}
         </label>
         <br />
       </div>
@@ -59,7 +73,11 @@ const Question = ({ str, id, updateArray, passRef, tickAns }) => {
           onChange={(e) => onChangeValue(e, 2)}
           checked={selectedAns == 3 ? true : false}
         />
-        <label htmlFor={qc}>Do it all the time to the correct standard.</label>
+        <label htmlFor={qc}>
+          Do it all the time to the correct standard.
+          {lnMgrTick === 3 ? <div className="labelMark">Spvsr.</div> : null}
+          {spvsrTick === 3 ? <div className="labelMark2">Ln Mgr.</div> : null}
+        </label>
         <br />
       </div>
       <div className="wideClear">
@@ -73,6 +91,8 @@ const Question = ({ str, id, updateArray, passRef, tickAns }) => {
         <label htmlFor={qd}>
           Do it all the time to the correct standard and ensure others do the
           same via mentoring / creating systems for people to use etc.
+          {lnMgrTick === 4 ? <div className="labelMark">Spvsr.</div> : null}
+          {spvsrTick === 4 ? <div className="labelMark2">Ln Mgr.</div> : null}
         </label>
         <br />
       </div>

@@ -673,6 +673,17 @@ element {
   height: 650px;
 }
 
+.labelMark {
+  float: right;
+  color: rgb(226, 226, 0);
+  margin: 0 !important;
+}
+.labelMark2 {
+  float: right;
+  color: rgb(255, 153, 0);
+  margin: 0 !important;
+}
+
 /* - - Mobile Styles - - */
 
 @media (max-width: 720px) {

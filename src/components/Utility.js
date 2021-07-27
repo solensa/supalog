@@ -101,7 +101,7 @@ export const returnUrlData = (dataNum) => {
 };
 
 // need to manually give each scenario... as eval from the import of qb5QuesArr doesn't work
-const returnEmptyArrFor = (qBankNum) => {
+export const returnEmptyArrFor = (qBankNum) => {
   let results = [];
   if (qBankNum === 5) {
     for (let i = 0; i < qb5QuesArr.length; i++) {
@@ -134,7 +134,7 @@ export const breakUrlIntoObj = () => {
   return paramsObj;
 };
 
-const serialize = (obj) => {
+export const convertObjToUrl = (obj) => {
   var str = [];
   for (var p in obj)
     if (obj.hasOwnProperty(p)) {
@@ -144,6 +144,28 @@ const serialize = (obj) => {
 };
 
 export const sendEmailToLm = (url) => {
+  console.log(url);
+  var titleStr = "Validate my Supervisor Exp. Log results";
+  var bodyStr = "Instructions: ";
+  bodyStr += encodeURIComponent(url);
+  sendEmail(titleStr, bodyStr);
+};
+
+export const sendEmailToSupervisor = (url) => {
+  console.log(url);
+  var titleStr = "Let's run through and finalise the Supervisor Exp. Log";
+  var bodyStr = "Instructions: ";
+  bodyStr += encodeURIComponent(url);
+  sendEmail(titleStr, bodyStr);
+};
+
+const sendEmail = (title, body) => {
+  var titleStr = title;
+  var bodyStr = body;
+  // window.open(
+  //   "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
+  // );
+
   // var outlookApp = new ActiveXObject("Outlook.Application");
   // var nameSpace = outlookApp.getNameSpace("MAPI");
   // mailFolder = nameSpace.getDefaultFolder(6);
@@ -152,15 +174,6 @@ export const sendEmailToLm = (url) => {
   // mailItem.To = "me@me.com";
   // mailItem.HTMLBody = eBody;
   // mailItem.display(0);
-  console.log(url);
-
-  var titleStr = "Validate my Supervisor Exp. Log results";
-  var bodyStr = "Instructions: ";
-  bodyStr += encodeURIComponent(url);
-  // window.open(
-  //   "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
-  // );
-  alert(bodyStr);
 };
 
 // export const getKeyByValue = (object, value) => {
