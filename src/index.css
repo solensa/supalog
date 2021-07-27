@@ -683,6 +683,23 @@ element {
   color: rgb(255, 153, 0);
   margin: 0 !important;
 }
+.verified {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.verifiedDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fcde75;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: "Barlow Condensed";
+  position: absolute;
+  margin: -34px 0 0 30px;
+}
 
 /* - - Mobile Styles - - */
 

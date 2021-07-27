@@ -90,8 +90,12 @@ export const returnUrlData = (dataNum) => {
     return results;
   }
   let paramsObj = breakUrlIntoObj();
-
-  let num = convertToBase4(paramsObj["qb" + dataNum]);
+  let num;
+  if (paramsObj["qb" + dataNum]) {
+    num = convertToBase4(paramsObj["qb" + dataNum]);
+  } else {
+    num = convertToBase4(paramsObj["qc" + dataNum]);
+  }
   num = padWithZeroes(num, results.length);
 
   for (var i = 0; i < results.length; i++) {

@@ -5,6 +5,7 @@ import { returnUrlData } from "./Utility.js";
 import { qb5QuesArr } from "./Data.js";
 
 const Results = () => {
+  const [isVerified, setIsVerified] = useState(false);
   const [data, setData] = useState([
     {
       name: "Safety",
@@ -218,7 +219,11 @@ const Results = () => {
 
   useEffect(() => {
     let num = returnUrlData(5);
-    console.log(num);
+
+    if (window.location.hash.includes("qc5")) {
+      setIsVerified(true);
+    }
+
     let sect1 = 0;
     let sect2 = 0;
     let sect3 = 0;
@@ -270,7 +275,12 @@ const Results = () => {
       </div>
       <div className="firstRow">
         <div className="resultsCol1">
-          <StatColumn title="Health, Safety & Wellbeing" data2={data} id={5} />
+          <StatColumn
+            title="Health, Safety & Wellbeing"
+            data2={data}
+            id={5}
+            isVerified={isVerified}
+          />
           <StatColumn title="Leadership & Mgt." data2={data2} id={1} />
         </div>
         <div className="resultsCol2">

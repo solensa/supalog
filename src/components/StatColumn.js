@@ -6,11 +6,12 @@ import {
   sendEmailToLm,
 } from "./Utility.js";
 import { useHistory } from "react-router-dom";
+import verifiedSvg from "../images/check.svg";
 // import FadeIn from "react-fade-in";
 
 const WIDTH = 170;
 
-const StatColumn = ({ title, data2, id }) => {
+const StatColumn = ({ title, data2, id, isVerified }) => {
   const history = useHistory();
 
   let HEIGHT = data2.length * 45.875;
@@ -74,6 +75,16 @@ const StatColumn = ({ title, data2, id }) => {
 
   return (
     <div className="resultColumn">
+      {isVerified ? (
+        <div className="verifiedDiv">
+          <img
+            className="verified"
+            src={verifiedSvg}
+            alt="verified by Line Manager"
+          />{" "}
+          Verified
+        </div>
+      ) : null}
       <div className="pieChartTitle">{title}</div>
       <PieChart width={WIDTH - 20} height={100}>
         <Pie
@@ -169,7 +180,7 @@ const StatColumn = ({ title, data2, id }) => {
           {headlineValue > 0 ? "UPDATE" : "START"}
         </button>
       </div>
-      {headlineValue > 0 ? (
+      {headlineValue > 0 && !isVerified ? (
         <div className={"statBtnWrap " + btnMargin}>
           <button
             className="hvr-bounce-to-top bounceBtn statButton"

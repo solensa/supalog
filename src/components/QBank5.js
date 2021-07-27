@@ -93,15 +93,17 @@ const QBank5 = () => {
   };
 
   const history = useHistory();
+
   const handleClick = () => {
     let isFormComplete = true;
-    for (let i = 0; i < results5; i++) {
+    for (let i = 0; i < results5.length; i++) {
       if (results5[i] < 0) {
         isFormComplete = false;
       }
     }
+    console.log(results5);
     if (!isFormComplete) {
-      alert("incomplete form!");
+      alert("You haven't answered all the questions!");
       return;
     }
 
@@ -117,7 +119,7 @@ const QBank5 = () => {
     } else if (qBankBeingFinalised > 0) {
       history.push({
         pathname: "/results",
-        search: "?qbc=" + x,
+        search: "?qc5=" + x,
       });
     } else {
       history.push({
