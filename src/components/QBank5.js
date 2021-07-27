@@ -14,6 +14,7 @@ import {
   convertObjToUrl,
   sendEmailToSupervisor,
   padWithZeroes,
+  convertStrToArr,
 } from "./Utility.js";
 
 const QBank5 = () => {
@@ -24,6 +25,7 @@ const QBank5 = () => {
   const [qBankBeingFinalised, setQBankBeingFinalised] = useState(-1);
   const [lnMgrTickArr, setLnMgrTickArr] = useState([]);
   const [spvsrTickArr, setSpvsrTickArr] = useState([]);
+
   // for (var i = 0; i < qb5QuesArr.length; i++) {
   //   results5.push(-1);
   // }
@@ -42,8 +44,10 @@ const QBank5 = () => {
       // results being validated
       let paramsObj = breakUrlIntoObj();
       setQBankBeingValidated(paramsObj["VALIDATE"]);
+      setResults5(returnUrlData(5));
     } else if (window.location.hash.includes("UPDATE")) {
       setIsBeingUpdated(true);
+      setResults5(returnUrlData(5));
     } else if (window.location.hash.includes("FINALISE")) {
       // results being finalised between LM & Supervisor
       let paramsObj = breakUrlIntoObj();
@@ -51,14 +55,24 @@ const QBank5 = () => {
       let results = returnEmptyArrFor(dataNum);
       let qaResults = convertToBase4(paramsObj["qa" + dataNum]);
       let qbResults = convertToBase4(paramsObj["qb" + dataNum]);
-      qaResults = padWithZeroes(qaResults, results.length);
-      qbResults = padWithZeroes(qbResults, results.length);
-      console.log(qaResults);
+      qaResults = convertStrToArr(padWithZeroes(qaResults, results.length));
+      qbResults = convertStrToArr(padWithZeroes(qbResults, results.length));
+      let tempResults5 = returnUrlData(5);
+
+      for (let i = 0; i < qaResults.length; i++) {
+        if (qaResults[i] == qbResults[i]) {
+          qaResults[i] = -1;
+          qbResults[i] = -1;
+        } else {
+          tempResults5[i] = -1;
+        }
+      }
       setLnMgrTickArr(qaResults);
       setSpvsrTickArr(qbResults);
       setQBankBeingFinalised(dataNum);
+      setIsBeingUpdated(true);
+      setResults5(tempResults5);
     }
-    setResults5(returnUrlData(5));
   }, []);
 
   // useEffect(() => {
@@ -80,6 +94,17 @@ const QBank5 = () => {
 
   const history = useHistory();
   const handleClick = () => {
+    let isFormComplete = true;
+    for (let i = 0; i < results5; i++) {
+      if (results5[i] < 0) {
+        isFormComplete = false;
+      }
+    }
+    if (!isFormComplete) {
+      alert("incomplete form!");
+      return;
+    }
+
     let x = convertToBase62(results5.join(""));
     if (qBankBeingValidated > 0) {
       let paramsObj = breakUrlIntoObj();
@@ -89,6 +114,11 @@ const QBank5 = () => {
       sendEmailToSupervisor(
         "http://localhost:3000/supalog#/hsm?" + convertObjToUrl(paramsObj)
       );
+    } else if (qBankBeingFinalised > 0) {
+      history.push({
+        pathname: "/results",
+        search: "?qbc=" + x,
+      });
     } else {
       history.push({
         pathname: "/results",
@@ -136,6 +166,8 @@ const QBank5 = () => {
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
             tickAns={isBeingUpdated ? results5[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
           />
         ) : null
       )}
@@ -153,6 +185,8 @@ const QBank5 = () => {
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
             tickAns={isBeingUpdated ? results5[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
           />
         ) : null
       )}
@@ -170,6 +204,8 @@ const QBank5 = () => {
             updateArray={updateArray}
             key={"b5q" + (parseInt(i) + 1)}
             tickAns={isBeingUpdated ? results5[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
           />
         ) : null
       )}

@@ -143,6 +143,14 @@ export const convertObjToUrl = (obj) => {
   return str.join("&");
 };
 
+export const convertStrToArr = (str) => {
+  let result = str.split("");
+  for (let i = 0; i < result.length; i++) {
+    result[i] = parseInt(result[i]);
+  }
+  return result;
+};
+
 export const sendEmailToLm = (url) => {
   console.log(url);
   var titleStr = "Validate my Supervisor Exp. Log results";
