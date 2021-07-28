@@ -29,7 +29,7 @@ const QBank5 = () => {
   // for (var i = 0; i < qb5QuesArr.length; i++) {
   //   results5.push(-1);
   // }
-
+  // console.log(window.location.origin + window.location.pathname);
   useEffect(() => {
     // add or remove refs
     setQb5Refs((qb5RefsArr) =>
@@ -120,7 +120,10 @@ const QBank5 = () => {
       paramsObj["FINALISE"] = qBankBeingValidated;
       delete paramsObj["VALIDATE"];
       sendEmailToSupervisor(
-        "http://localhost:3000/supalog#/hsm?" + convertObjToUrl(paramsObj)
+        window.location.origin +
+          window.location.pathname +
+          "#/hsm?" +
+          convertObjToUrl(paramsObj)
       );
     } else if (qBankBeingFinalised > 0) {
       history.push({

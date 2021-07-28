@@ -58,7 +58,9 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
   const validateClick = () => {
     // console.log("validate click");
     let str =
-      "http://localhost:3000/supalog#/hsm?VALIDATE=" +
+      window.location.origin +
+      window.location.pathname +
+      "#/hsm?VALIDATE=" +
       id +
       "&" +
       returnUrlStr();
