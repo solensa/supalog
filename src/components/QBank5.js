@@ -40,6 +40,10 @@ const QBank5 = () => {
   }, [qb5QuesArr.length]);
 
   useEffect(() => {
+    for (var i = 0; i < qb5QuesArr.length; i++) {
+      results5.push(-1);
+    }
+
     if (window.location.hash.includes("VALIDATE")) {
       // results being validated
       let paramsObj = breakUrlIntoObj();
@@ -49,6 +53,7 @@ const QBank5 = () => {
       setIsBeingUpdated(true);
       setResults5(returnUrlData(5));
     } else if (window.location.hash.includes("FINALISE")) {
+      console.log("FINALISE");
       // results being finalised between LM & Supervisor
       let paramsObj = breakUrlIntoObj();
       let dataNum = paramsObj["FINALISE"];
@@ -67,6 +72,7 @@ const QBank5 = () => {
           tempResults5[i] = -1;
         }
       }
+      // console.log(qaResults);
       setLnMgrTickArr(qaResults);
       setSpvsrTickArr(qbResults);
       setQBankBeingFinalised(dataNum);
@@ -83,7 +89,7 @@ const QBank5 = () => {
     let results = results5;
     results[index] = value;
     setResults5(results);
-    // console.log(results5);
+    console.log(results5);
     if (index < qb5RefsArr.length - 1) {
       qb5RefsArr[index + 1].current.scrollIntoView({
         behavior: "smooth",
