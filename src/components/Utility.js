@@ -174,9 +174,9 @@ export const sendEmailToSupervisor = (url) => {
 const sendEmail = (title, body) => {
   var titleStr = title;
   var bodyStr = body;
-  // window.open(
-  //   "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
-  // );
+  window.open(
+    "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
+  );
 
   // var outlookApp = new ActiveXObject("Outlook.Application");
   // var nameSpace = outlookApp.getNameSpace("MAPI");

@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div id="appBox" className="panel wideClear active">
       <div className="quizHeader">
-        <h1>Supervisor Experience Log</h1>
+        <h1>The Experience Log</h1>
         <p>
           Welcome to the Supervisor Experience Log - a new digitised version
           that is being developed.
