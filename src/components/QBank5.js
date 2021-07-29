@@ -150,27 +150,35 @@ const QBank5 = () => {
   return (
     <div id="appBox" className="panel wideClear active">
       <div className="quizHeader">
-        <h1 className="QBank">
-          {isBeingUpdated && qBankBeingFinalised < 0
-            ? "Update your results:"
-            : null}
-          {qBankBeingValidated > 0 ? "Validating Supervisors Results" : null}
-          {qBankBeingFinalised > 0 ? "Finalising the Results" : null}
-        </h1>
-        <p>
-          <strong>Instructions:</strong>
-        </p>
-        <p className="paddingBelow50">
-          {isBeingUpdated && qBankBeingFinalised < 0
-            ? "Update your results as per your first run through. Don't forget to then send them on to your Line Manager via the VALIDATE button on the results page to keep a record of your dashboard."
-            : null}
-          {qBankBeingValidated > 0
-            ? "Input your ratings for the supervisor against the capability framework below. Once complete, you'll then need to set up a meeting to run through the results and agree on a final score."
-            : null}
-          {qBankBeingFinalised > 0
-            ? "Discuss the results below, especially those areas where there is a difference of opinion. When complete, don't forget to send the results by email to sdp@laingorourke.com"
-            : null}
-        </p>
+        {isBeingUpdated ||
+        qBankBeingFinalised > 0 ||
+        qBankBeingValidated > 0 ? (
+          <>
+            <h1 className="QBank">
+              {isBeingUpdated && qBankBeingFinalised < 0
+                ? "Update your results:"
+                : null}
+              {qBankBeingValidated > 0
+                ? "Validating Supervisors Results"
+                : null}
+              {qBankBeingFinalised > 0 ? "Finalising the Results" : null}
+            </h1>
+            <p>
+              <strong>Instructions:</strong>
+            </p>
+            <p className="paddingBelow50">
+              {isBeingUpdated && qBankBeingFinalised < 0
+                ? "Update your results as per your first run through. Don't forget to then send them on to your Line Manager via the VALIDATE button on the results page to keep a record of your dashboard."
+                : null}
+              {qBankBeingValidated > 0
+                ? "Input your ratings for the supervisor against the capability framework below. Once complete, you'll then need to set up a meeting to run through the results and agree on a final score."
+                : null}
+              {qBankBeingFinalised > 0
+                ? "Discuss the results below, especially those areas where there is a difference of opinion. When complete, don't forget to send the results by email to sdp@laingorourke.com"
+                : null}
+            </p>
+          </>
+        ) : null}
       </div>
 
       <div className="quizHeader">
