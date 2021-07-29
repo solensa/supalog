@@ -14,7 +14,7 @@ const StatCard = ({ data1, show }) => {
   for (let i = 0; i < data1.length; i++) {
     avgScore = avgScore + data1[i].value;
   }
-  avgScore = Math.round(avgScore / data1.length);
+  avgScore = Math.round(avgScore / data1.length) + 10;
 
   return (
     <>

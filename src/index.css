@@ -779,6 +779,9 @@ element {
     padding: 0px 20px 0 0;
   }
 }
+.paddingBelow50 {
+  padding-bottom: 50px;
+}
 
 @media (max-width: 600px) {
   .quizItem.errorMsg,

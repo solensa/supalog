@@ -158,7 +158,8 @@ export const convertStrToArr = (str) => {
 export const sendEmailToLm = (url) => {
   console.log(url);
   var titleStr = "Validate my Supervisor Exp. Log results";
-  var bodyStr = "Instructions: ";
+  var bodyStr =
+    "Instructions: Send this to you Line Manager who will give their review of you against the framework. %0D%0A %0D%0A Hi %0D%0A %0D%0A Could you please rate me against the Supervisor capability framework by following the link below. Once this is done, we can compare your results against mine and agree a final score. %0D%0A %0D%0A This will help me create a development plan. %0D%0A %0D%0A";
   bodyStr += encodeURIComponent(url);
   sendEmail(titleStr, bodyStr);
 };
@@ -166,7 +167,16 @@ export const sendEmailToLm = (url) => {
 export const sendEmailToSupervisor = (url) => {
   console.log(url);
   var titleStr = "Let's run through and finalise the Supervisor Exp. Log";
-  var bodyStr = "Instructions: ";
+  var bodyStr =
+    "Instructions: Arrange time with your supervisor to run through the link below. This will show where your, and your supervisors' ratings differ, giving an opportunity to discuss any differences. Agree on a final rating and complete as before. %0D%0A %0D%0A Hi %0D%0A %0D%0A Let's run through the results and talk through your development goals. %0D%0A %0D%0A";
+  bodyStr += encodeURIComponent(url);
+  sendEmail(titleStr, bodyStr);
+};
+
+export const sendEmailToSave = (url) => {
+  console.log(url);
+  var titleStr = "Saved Supalog Dashboard URL";
+  var bodyStr = "Here's a link back to your dashboard: %0D%0A %0D%0A";
   bodyStr += encodeURIComponent(url);
   sendEmail(titleStr, bodyStr);
 };
@@ -175,7 +185,10 @@ const sendEmail = (title, body) => {
   var titleStr = title;
   var bodyStr = body;
   window.open(
-    "mailto:yourEmail@laingorourke.com?subject=" + titleStr + "&body=" + bodyStr
+    "mailto:yourLineManagersEmail@laingorourke.com?cc=sdp@laingorourke.com&subject=" +
+      titleStr +
+      "&body=" +
+      bodyStr
   );
 
   // var outlookApp = new ActiveXObject("Outlook.Application");

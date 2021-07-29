@@ -4,6 +4,7 @@ import {
   returnUrlStr,
   returnUrlStrForValidation,
   sendEmailToLm,
+  sendEmailToSave,
 } from "./Utility.js";
 import { useHistory } from "react-router-dom";
 import verifiedSvg from "../images/check.svg";
@@ -32,7 +33,7 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
   ];
 
   let headlineValue = Math.round(
-    (100 * data[0].value) / (data[0].value + data[1].value)
+    (100 * data[0].value) / (data[0].value + data[1].value) + 10
   );
 
   const CustomLabel = ({ x, y, name, value }) => {
@@ -52,6 +53,7 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
 
   const startClick = () => {
     console.log("start click");
+    alert("Coming Soon!");
     // history.push("/results");
   };
 
@@ -73,6 +75,12 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
     let str = "/hsm?UPDATE=" + id + "&" + returnUrlStr();
     // console.log(str);
     history.push(str);
+  };
+
+  const saveClick = () => {
+    console.log("save click");
+    sendEmailToLm(window.location);
+    // history.push("/results");
   };
 
   return (
@@ -130,12 +138,12 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
                 ? "#50A684"
                 : headlineValue >= 25
                 ? "#F1C050"
-                : headlineValue > 0
+                : headlineValue > 10
                 ? "#F7645C"
                 : "#3708a2",
           }}
         >
-          {headlineValue > 0 ? headlineValue : <div className="tbc">tbc</div>}
+          {headlineValue > 10 ? headlineValue : <div className="tbc">tbc</div>}
         </div>
         <BarChart
           layout="vertical"
@@ -177,18 +185,27 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
       <div className={"statBtnWrap " + btnMargin}>
         <button
           className="hvr-bounce-to-top bounceBtn statButton statBtn2"
-          onClick={headlineValue > 0 ? updateClick : startClick}
+          onClick={headlineValue > 10 ? updateClick : startClick}
         >
-          {headlineValue > 0 ? "UPDATE" : "START"}
+          {headlineValue > 10 ? "UPDATE" : "START"}
         </button>
       </div>
-      {headlineValue > 0 && !isVerified ? (
+      {headlineValue > 10 && !isVerified ? (
         <div className={"statBtnWrap " + btnMargin}>
           <button
             className="hvr-bounce-to-top bounceBtn statButton"
             onClick={validateClick}
           >
-            Validate
+            VALIDATE
+          </button>
+        </div>
+      ) : headlineValue > 10 ? (
+        <div className={"statBtnWrap " + btnMargin}>
+          <button
+            className="hvr-bounce-to-top bounceBtn statButton"
+            onClick={saveClick}
+          >
+            SAVE
           </button>
         </div>
       ) : null}

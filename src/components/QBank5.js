@@ -13,6 +13,7 @@ import {
   breakUrlIntoObj,
   convertObjToUrl,
   sendEmailToSupervisor,
+  sendEmailToSave,
   padWithZeroes,
   convertStrToArr,
 } from "./Utility.js";
@@ -57,11 +58,15 @@ const QBank5 = () => {
       // results being finalised between LM & Supervisor
       let paramsObj = breakUrlIntoObj();
       let dataNum = paramsObj["FINALISE"];
-      let results = returnEmptyArrFor(dataNum);
+
       let qaResults = convertToBase4(paramsObj["qa" + dataNum]);
       let qbResults = convertToBase4(paramsObj["qb" + dataNum]);
-      qaResults = convertStrToArr(padWithZeroes(qaResults, results.length));
-      qbResults = convertStrToArr(padWithZeroes(qbResults, results.length));
+
+      qaResults = convertStrToArr(padWithZeroes(qaResults, results5.length));
+      qbResults = convertStrToArr(padWithZeroes(qbResults, results5.length));
+
+      console.log(qaResults);
+      console.log(qbResults);
       let tempResults5 = returnUrlData(5);
 
       for (let i = 0; i < qaResults.length; i++) {
@@ -72,9 +77,9 @@ const QBank5 = () => {
           tempResults5[i] = -1;
         }
       }
-      // console.log(qaResults);
-      setLnMgrTickArr(qaResults);
-      setSpvsrTickArr(qbResults);
+
+      setLnMgrTickArr(qbResults);
+      setSpvsrTickArr(qaResults);
       setQBankBeingFinalised(dataNum);
       setIsBeingUpdated(true);
       setResults5(tempResults5);
@@ -126,6 +131,10 @@ const QBank5 = () => {
           convertObjToUrl(paramsObj)
       );
     } else if (qBankBeingFinalised > 0) {
+      sendEmailToSave(
+        window.location.origin + window.location.pathname + "#/results?qc5=" + x
+      );
+
       history.push({
         pathname: "/results",
         search: "?qc5=" + x,
@@ -142,9 +151,26 @@ const QBank5 = () => {
     <div id="appBox" className="panel wideClear active">
       <div className="quizHeader">
         <h1 className="QBank">
-          {isBeingUpdated ? "Updating your results" : null}
+          {isBeingUpdated && qBankBeingFinalised < 0
+            ? "Update your results:"
+            : null}
           {qBankBeingValidated > 0 ? "Validating Supervisors Results" : null}
+          {qBankBeingFinalised > 0 ? "Finalising the Results" : null}
         </h1>
+        <p>
+          <strong>Instructions:</strong>
+        </p>
+        <p className="paddingBelow50">
+          {isBeingUpdated && qBankBeingFinalised < 0
+            ? "Update your results as per your first run through. Don't forget to then send them on to your Line Manager via the VALIDATE button on the results page to keep a record of your dashboard."
+            : null}
+          {qBankBeingValidated > 0
+            ? "Input your ratings for the supervisor against the capability framework below. Once complete, you'll then need to set up a meeting to run through the results and agree on a final score."
+            : null}
+          {qBankBeingFinalised > 0
+            ? "Discuss the results below, especially those areas where there is a difference of opinion. When complete, don't forget to send the results by email to sdp@laingorourke.com"
+            : null}
+        </p>
       </div>
 
       <div className="quizHeader">
