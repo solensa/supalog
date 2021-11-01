@@ -1,4 +1,4 @@
-import { qb5QuesArr } from "./Data.js";
+import { qb1QuesArr, qb5QuesArr } from "./Data.js";
 
 const convertBase = (str, fromBase, toBase) => {
   const DIGITS =
@@ -22,7 +22,7 @@ const convertBase = (str, fromBase, toBase) => {
 
   const multiplyByNumber = (num, x, base) => {
     if (num < 0) return null;
-    if (num == 0) return [];
+    if (num === 0) return [];
 
     let result = [];
     let power = x;
@@ -41,7 +41,7 @@ const convertBase = (str, fromBase, toBase) => {
     let arr = [];
     for (let i = digits.length - 1; i >= 0; i--) {
       const n = DIGITS.indexOf(digits[i]);
-      if (n == -1) return null;
+      if (n === -1) return null;
       arr.push(n);
     }
     return arr;
@@ -83,7 +83,7 @@ export const padWithZeroes = (number, length) => {
   return my_string;
 };
 
-export const returnUrlData = (dataNum) => {
+export const returnUrlDataForBank = (dataNum) => {
   let results = returnEmptyArrFor(dataNum);
 
   if (!window.location.hash.includes("=")) {
@@ -104,9 +104,30 @@ export const returnUrlData = (dataNum) => {
   return results;
 };
 
+// Function that returns an array of the number banks present in the URL.
+// e.g. http://localhost:3000/supalog#/results?qb1=lG&qb2=iG
+// [1,2]
+export const returnUrlBanksArr = () => {
+  if (!window.location.hash.includes("=")) {
+    return;
+  }
+  let paramsObj = breakUrlIntoObj();
+  let banksArr = [];
+  let keys = Object.keys(paramsObj);
+  for (let i = 0; i < keys.length; i++) {
+    banksArr.push(parseInt(keys[i].replace(/^\D+/g, "")));
+  }
+  return banksArr;
+};
+
 // need to manually give each scenario... as eval from the import of qb5QuesArr doesn't work
 export const returnEmptyArrFor = (qBankNum) => {
   let results = [];
+  if (qBankNum === 1) {
+    for (let i = 0; i < qb1QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
   if (qBankNum === 5) {
     for (let i = 0; i < qb5QuesArr.length; i++) {
       results.push(0);
@@ -128,13 +149,18 @@ export const returnUrlStr = () => {
 //   return serialize(paramsObj);
 // };
 
+// returns the elements of a URL into a key value dictionary
 export const breakUrlIntoObj = () => {
-  let urlStr = window.location.hash.substr(1).split("?")[1];
-  let paramsObj = urlStr.split("&").reduce(function (res, item) {
-    let parts = item.split("=");
-    res[parts[0]] = parts[1];
-    return res;
-  }, {});
+  let paramsObj = {};
+  if (window.location.href.indexOf("?") !== -1) {
+    let urlStr = window.location.hash.substr(1).split("?")[1];
+    paramsObj = urlStr.split("&").reduce(function (res, item) {
+      let parts = item.split("=");
+      res[parts[0]] = parts[1];
+      return res;
+    }, {});
+  }
+
   return paramsObj;
 };
 
@@ -201,6 +227,88 @@ const sendEmail = (title, body) => {
   // mailItem.display(0);
 };
 
+export const getBankStrCodeFromId = (id) => {
+  let bankStrCode = "";
+  if (id === 1) {
+    bankStrCode = "lmgt";
+  } else if (id === 5) {
+    bankStrCode = "hsm";
+  }
+  return bankStrCode;
+};
+
 // export const getKeyByValue = (object, value) => {
 //   return Object.keys(object).find((key) => object[key] === value);
 // };
+
+//qBank handleclick
+export const handleQBankCompletionClick = (
+  id,
+  results,
+  qBankBeingValidated,
+  qBankBeingFinalised,
+  history
+) => {
+  let isFormComplete = true;
+  for (let i = 0; i < results.length; i++) {
+    if (results[i] < 0) {
+      isFormComplete = false;
+    }
+  }
+  // console.log(results);
+  if (!isFormComplete) {
+    alert("You haven't answered all the questions!");
+    return;
+  }
+
+  let x = convertToBase62(results.join(""));
+  let paramsObj = breakUrlIntoObj();
+
+  // Validation route
+  if (qBankBeingValidated > 0) {
+    console.log("Finished being validated");
+    paramsObj["qa" + id] = x;
+    paramsObj["FINALISE"] = id;
+    delete paramsObj["VALIDATE"];
+    sendEmailToSupervisor(
+      window.location.origin +
+        window.location.pathname +
+        "#/" +
+        getBankStrCodeFromId(id) +
+        "?" +
+        convertObjToUrl(paramsObj)
+    );
+  }
+  // Finalisation route
+  else if (qBankBeingFinalised > 0) {
+    console.log("Finished being finalised");
+    paramsObj["qc" + id] = x;
+    delete paramsObj["qa" + id];
+    delete paramsObj["qb" + id];
+    delete paramsObj["FINALISE"];
+    sendEmailToSave(
+      window.location.origin +
+        window.location.pathname +
+        "#/results?" +
+        convertObjToUrl(paramsObj)
+    );
+
+    history.push({
+      pathname: "/results",
+      search: "?" + convertObjToUrl(paramsObj),
+    });
+  }
+  // Starting / Updating route
+  else {
+    console.log("Finished first entry of data");
+    let paramsObj = breakUrlIntoObj();
+    paramsObj["qb" + id] = x;
+    delete paramsObj["qc" + id];
+    delete paramsObj["UPDATE"];
+    console.log(paramsObj);
+    history.push({
+      pathname: "/results",
+      search: "?" + convertObjToUrl(paramsObj),
+    });
+  }
+};

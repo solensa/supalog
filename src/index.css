@@ -701,6 +701,12 @@ element {
   margin: -34px 0 0 30px;
 }
 
+/* hacky fix to stop verified banner on results page pushing the bar chart results down the page */
+.top-35 {
+  top: -35px;
+  position: relative;
+}
+
 /* - - Mobile Styles - - */
 
 @media (max-width: 720px) {

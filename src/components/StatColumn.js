@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis } from "recharts";
 import {
   returnUrlStr,
-  returnUrlStrForValidation,
   sendEmailToLm,
-  sendEmailToSave,
+  getBankStrCodeFromId,
 } from "./Utility.js";
 import { useHistory } from "react-router-dom";
 import verifiedSvg from "../images/check.svg";
@@ -12,20 +11,20 @@ import verifiedSvg from "../images/check.svg";
 
 const WIDTH = 170;
 
-const StatColumn = ({ title, data2, id, isVerified }) => {
+const StatColumn = ({ title, dataToShow, id, isVerified }) => {
   const history = useHistory();
 
-  let HEIGHT = data2.length * 45.875;
-  let btnMargin = "btnMargin" + data2.length;
-  if (data2.length >= 6) {
+  let HEIGHT = dataToShow.length * 45.875;
+  let btnMargin = "btnMargin" + dataToShow.length;
+  if (dataToShow.length >= 6) {
     HEIGHT = 420;
   }
 
   let avgScore = 0;
-  for (let i = 0; i < data2.length; i++) {
-    avgScore = avgScore + data2[i].value;
+  for (let i = 0; i < dataToShow.length; i++) {
+    avgScore = avgScore + dataToShow[i].value;
   }
-  avgScore = avgScore / data2.length;
+  avgScore = avgScore / dataToShow.length;
 
   const data = [
     { name: "Category score / 100", value: avgScore },
@@ -38,7 +37,7 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
 
   const CustomLabel = ({ x, y, name, value }) => {
     y = y - 21;
-    if (headlineValue == 0) {
+    if (headlineValue === 0) {
       value = "- -";
     }
     return (
@@ -52,17 +51,26 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
   };
 
   const startClick = () => {
-    console.log("start click");
-    alert("Coming Soon!");
-    // history.push("/results");
+    if (id === 1) {
+      let bankStrCode = getBankStrCodeFromId(id);
+      let str = "/" + bankStrCode + "?" + returnUrlStr();
+      // console.log(str);
+      history.push(str);
+    } else {
+      console.log("start click");
+      alert("Coming Soon!");
+    }
   };
 
   const validateClick = () => {
     // console.log("validate click");
+    let bankStrCode = getBankStrCodeFromId(id);
     let str =
       window.location.origin +
       window.location.pathname +
-      "#/hsm?VALIDATE=" +
+      "#/" +
+      bankStrCode +
+      "?VALIDATE=" +
       id +
       "&" +
       returnUrlStr();
@@ -72,7 +80,9 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
 
   const updateClick = () => {
     // console.log("update click");
-    let str = "/hsm?UPDATE=" + id + "&" + returnUrlStr();
+    let bankStrCode = getBankStrCodeFromId(id);
+
+    let str = "/" + bankStrCode + "?UPDATE=" + id + "&" + returnUrlStr();
     // console.log(str);
     history.push(str);
   };
@@ -110,7 +120,7 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
           dataKey="value"
         >
           {data.map((entry, index) =>
-            index == 0 ? (
+            index === 0 ? (
               <Cell
                 key={`cell-${index}`}
                 fill={
@@ -145,42 +155,44 @@ const StatColumn = ({ title, data2, id, isVerified }) => {
         >
           {headlineValue > 10 ? headlineValue : <div className="tbc">tbc</div>}
         </div>
-        <BarChart
-          layout="vertical"
-          width={WIDTH - 30}
-          height={HEIGHT}
-          data={data2}
-          margin={{
-            top: 20,
-            right: 5,
-            left: 5,
-            bottom: 20,
-          }}
-          barSize={7}
-          // barCategoryGap={"45%"}
-          // barGap={5}
-        >
-          <XAxis type="number" domain={[0, 100]} hide />
-          <Bar
-            dataKey="value"
-            // fill="red"
-            background={{ fill: "#eee" }}
-            label={CustomLabel}
+        <div className={isVerified ? "top-35" : ""}>
+          <BarChart
+            layout="vertical"
+            width={WIDTH - 30}
+            height={HEIGHT}
+            data={dataToShow}
+            margin={{
+              top: 20,
+              right: 5,
+              left: 5,
+              bottom: 20,
+            }}
+            barSize={7}
+            // barCategoryGap={"45%"}
+            // barGap={5}
           >
-            {data2.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={
-                  data2[index].value >= 75
-                    ? "#50A684"
-                    : data2[index].value >= 25
-                    ? "#F1C050"
-                    : "#F7645C"
-                }
-              />
-            ))}
-          </Bar>
-        </BarChart>
+            <XAxis type="number" domain={[0, 100]} hide />
+            <Bar
+              dataKey="value"
+              // fill="red"
+              background={{ fill: "#eee" }}
+              label={CustomLabel}
+            >
+              {dataToShow.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={
+                    dataToShow[index].value >= 75
+                      ? "#50A684"
+                      : dataToShow[index].value >= 25
+                      ? "#F1C050"
+                      : "#F7645C"
+                  }
+                />
+              ))}
+            </Bar>
+          </BarChart>
+        </div>
       </div>
       <div className={"statBtnWrap " + btnMargin}>
         <button

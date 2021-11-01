@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import QBank1 from "./components/QBank1";
 import QBank5 from "./components/QBank5";
 import Home from "./components/Home";
 import Results from "./components/Results";
@@ -23,6 +24,9 @@ const App = () => {
           </Route>
           <Route path="/hsm">
             <QBank5 />
+          </Route>
+          <Route path="/lmgt">
+            <QBank1 />
           </Route>
           <Route path="/results">
             <Results />

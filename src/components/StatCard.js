@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./StatCard.css";
 
-const StatCard = ({ data1, show }) => {
+const StatCard = ({ data1, data5, show }) => {
   // const cardRef = useRef();
   const [showCard, setShowCard] = useState(false);
   useEffect(() => {
@@ -10,11 +10,25 @@ const StatCard = ({ data1, show }) => {
     }, 800);
   }, [show]);
 
-  let avgScore = 0;
+  let overallAvgScore = 0,
+    avgScore1 = 0,
+    avgScore5 = 0,
+    avgDenominator = 1;
+
   for (let i = 0; i < data1.length; i++) {
-    avgScore = avgScore + data1[i].value;
+    avgScore1 = avgScore1 + data1[i].value;
   }
-  avgScore = Math.round(avgScore / data1.length) + 10;
+  for (let i = 0; i < data5.length; i++) {
+    avgScore5 = avgScore5 + data5[i].value;
+  }
+
+  if (avgScore1 !== 0) {
+    avgScore1 = Math.round(avgScore1 / data1.length) + 10;
+    avgDenominator += 1;
+  }
+  avgScore5 = Math.round(avgScore5 / data5.length) + 10;
+
+  overallAvgScore = (avgScore1 + avgScore5) / avgDenominator;
 
   return (
     <>
@@ -30,7 +44,7 @@ const StatCard = ({ data1, show }) => {
         <div id="card-inner">
           <div id="card-top">
             <div className="info">
-              <div className="value">{avgScore}</div>
+              <div className="value">{overallAvgScore}</div>
               <div className="position">supa</div>
               <div className="country">
                 <div></div>
@@ -46,11 +60,11 @@ const StatCard = ({ data1, show }) => {
               <div>
                 <ul>
                   <li>
-                    <span>{avgScore}</span>
+                    <span>{avgScore5}</span>
                     <span>hsw</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore1 === 0 ? "--" : avgScore1}</span>
                     <span>L&M</span>
                   </li>
                   <li>

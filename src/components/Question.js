@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Question = ({
   str,
@@ -41,7 +41,7 @@ const Question = ({
           name={name}
           id={qa}
           onChange={(e) => onChangeValue(e, 0)}
-          checked={selectedAns == 1 ? true : false}
+          checked={selectedAns === 1 ? true : false}
         />
         <label htmlFor={qa}>
           Do not do it or at a junior level.
@@ -56,7 +56,7 @@ const Question = ({
           name={name}
           id={qb}
           onChange={(e) => onChangeValue(e, 1)}
-          checked={selectedAns == 2 ? true : false}
+          checked={selectedAns === 2 ? true : false}
         />
         <label htmlFor={qb}>
           Do it sometimes, but not always to the correct standard.
@@ -71,7 +71,7 @@ const Question = ({
           name={name}
           id={qc}
           onChange={(e) => onChangeValue(e, 2)}
-          checked={selectedAns == 3 ? true : false}
+          checked={selectedAns === 3 ? true : false}
         />
         <label htmlFor={qc}>
           Do it all the time to the correct standard.
@@ -86,7 +86,7 @@ const Question = ({
           name={name}
           id={qd}
           onChange={(e) => onChangeValue(e, 3)}
-          checked={selectedAns == 4 ? true : false}
+          checked={selectedAns === 4 ? true : false}
         />
         <label htmlFor={qd}>
           Do it all the time to the correct standard and ensure others do the

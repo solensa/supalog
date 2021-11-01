@@ -39,3 +39,12 @@ export const qb5QuesArr = [
   "Proactively applies principles from the Energy Project and wellbeing to support personal sustainability and performance in their teams",
   "Role models capacity management and wellbeing and creates an environment to support this in their team",
 ];
+
+export const qb1QuesArr = [
+  "yoyoyo Understands their duty to look after their own health and safety and the health and safety of their team",
+  "Shows their team a sense of personal and collective responsibility and commitment for health and safety",
+  "Supports their Manager implementing the LOR H&S management system [inc policy and procedures]",
+  "Promotes open communication on all H&S matters, involves team members in drawing up planned methods, and provides advice and support to team members in complex/ demanding situations",
+  "Knows the principles of the Laing O’Rourke Safety Management System (SMS) and understands that they play a key part in helping the team and their Manager to comply with its requirements",
+  "Knows to pause operations whenever circumstances change, review risk assessment and update Method Statement Task Sheets with the Responsible Manager and brief the team before re-starting",
+];

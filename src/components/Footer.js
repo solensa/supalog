@@ -7,10 +7,15 @@ const Footer = () => {
 
   return (
     <div className="wideClear footer">
-      <img className={showRyu ? "zilla show" : "zilla"} src={zilla} />
+      <img
+        className={showRyu ? "zilla show" : "zilla"}
+        src={zilla}
+        alt="zilla"
+      />
       <p>
         <a
           className="saltlick transition"
+          rel="noreferrer"
           href="https://www.laingorourke.com/who-we-are/about-us.aspx"
           target="_blank"
           onMouseEnter={() => setShowRyu(true)}
