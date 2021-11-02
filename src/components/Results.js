@@ -232,24 +232,33 @@ const Results = () => {
       sect8 = 0;
 
       for (let i = 0; i < num.length; i++) {
-        if (i < 17) {
+        if (i < 16) {
           sect1 += parseInt(num[i]);
-        } else if (i < 27) {
+        } else if (i < 19) {
           sect2 += parseInt(num[i]);
-        } else if (i < 35) {
+        } else if (i < 22) {
           sect3 += parseInt(num[i]);
-        } else {
+        } else if (i < 31) {
           sect4 += parseInt(num[i]);
+        } else if (i < 34) {
+          sect5 += parseInt(num[i]);
+        } else if (i < 38) {
+          sect6 += parseInt(num[i]);
+        } else if (i < 45) {
+          sect7 += parseInt(num[i]);
+        } else {
+          sect8 += parseInt(num[i]);
         }
       }
-      dataVal1 = Math.round((33.33 * sect1) / 17);
-      dataVal2 = Math.round((33.33 * sect2) / 10);
-      dataVal3 = Math.round((33.33 * sect3) / 8);
-      dataVal4 = Math.round((33.33 * sect4) / 4);
-      dataVal5 = Math.round((33.33 * sect5) / 17);
-      dataVal6 = Math.round((33.33 * sect6) / 10);
-      dataVal7 = Math.round((33.33 * sect7) / 8);
-      dataVal8 = Math.round((33.33 * sect8) / 4);
+      // 33.33% as there are 4 choices and this needs to be waited
+      dataVal1 = Math.round((33.33 * sect1) / 16);
+      dataVal2 = Math.round((33.33 * sect2) / 3);
+      dataVal3 = Math.round((33.33 * sect3) / 3);
+      dataVal4 = Math.round((33.33 * sect4) / 9);
+      dataVal5 = Math.round((33.33 * sect5) / 3);
+      dataVal6 = Math.round((33.33 * sect6) / 4);
+      dataVal7 = Math.round((33.33 * sect7) / 7);
+      dataVal8 = Math.round((33.33 * sect8) / 7);
 
       setData1([
         {

@@ -143,10 +143,10 @@ const QBank1 = () => {
       </div>
 
       <div className="quizHeader">
-        <h1 className="QBank">Safety</h1>
+        <h1 className="QBank">Performance Management</h1>
       </div>
       {qb1RefsArr.map((el, i) =>
-        i < 3 ? (
+        i < 16 ? (
           <Question
             passRef={qb1RefsArr[i]}
             id={"b1q" + (parseInt(i) + 1)}
@@ -161,10 +161,118 @@ const QBank1 = () => {
       )}
       <div className="quizHeader">
         <img className="supalogLogo" src={log} alt="logo" />
-        <h1 className="QBank">Occupational health</h1>
+        <h1 className="QBank">Recruitment & Selection</h1>
       </div>
       {qb1RefsArr.map((el, i) =>
-        i >= 3 && i < 6 ? (
+        i >= 16 && i < 19 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Employee Relations</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 19 && i < 22 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Team Performance & Development</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 22 && i < 31 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Talent Management</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 31 && i < 34 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Time Management</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 34 && i < 38 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Leadership & Directiveness</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 38 && i < 45 ? (
+          <Question
+            passRef={qb1RefsArr[i]}
+            id={"b1q" + (parseInt(i) + 1)}
+            str={qb1QuesArr[i]}
+            updateArray={updateArray}
+            key={"b1q" + (parseInt(i) + 1)}
+            tickAns={isBeingUpdated ? results1[i] + 1 : null}
+            lnMgrTick={lnMgrTickArr[i] + 1}
+            spvsrTick={spvsrTickArr[i] + 1}
+          />
+        ) : null
+      )}
+      <div className="quizHeader">
+        <img className="supalogLogo" src={log} alt="logo" />
+        <h1 className="QBank">Communication & Influencing Skills</h1>
+      </div>
+      {qb1RefsArr.map((el, i) =>
+        i >= 45 ? (
           <Question
             passRef={qb1RefsArr[i]}
             id={"b1q" + (parseInt(i) + 1)}
