@@ -90,7 +90,7 @@ const StatCard = ({
   }
   avgScore5 = Math.round(avgScore5 / data5.length) + 10;
 
-  overallAvgScore =
+  overallAvgScore = Math.round(
     (avgScore1 +
       avgScore2 +
       avgScore3 +
@@ -99,7 +99,8 @@ const StatCard = ({
       avgScore6 +
       avgScore7 +
       avgScore8) /
-    avgDenominator;
+      avgDenominator
+  );
 
   return (
     <>
