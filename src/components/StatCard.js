@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./StatCard.css";
 
-const StatCard = ({ data1, data5, show }) => {
+const StatCard = ({
+  data1,
+  data2,
+  data3,
+  data4,
+  data5,
+  data6,
+  data7,
+  data8,
+  show,
+}) => {
   // const cardRef = useRef();
   const [showCard, setShowCard] = useState(false);
   useEffect(() => {
@@ -12,23 +22,84 @@ const StatCard = ({ data1, data5, show }) => {
 
   let overallAvgScore = 0,
     avgScore1 = 0,
+    avgScore2 = 0,
+    avgScore3 = 0,
+    avgScore4 = 0,
     avgScore5 = 0,
+    avgScore6 = 0,
+    avgScore7 = 0,
+    avgScore8 = 0,
     avgDenominator = 1;
 
   for (let i = 0; i < data1.length; i++) {
     avgScore1 = avgScore1 + data1[i].value;
   }
+  for (let i = 0; i < data2.length; i++) {
+    avgScore2 = avgScore2 + data2[i].value;
+  }
+  for (let i = 0; i < data3.length; i++) {
+    avgScore3 = avgScore3 + data3[i].value;
+  }
+  for (let i = 0; i < data4.length; i++) {
+    avgScore4 = avgScore4 + data4[i].value;
+  }
   for (let i = 0; i < data5.length; i++) {
     avgScore5 = avgScore5 + data5[i].value;
+  }
+  for (let i = 0; i < data6.length; i++) {
+    avgScore6 = avgScore6 + data6[i].value;
+  }
+  for (let i = 0; i < data7.length; i++) {
+    avgScore7 = avgScore7 + data7[i].value;
+  }
+  for (let i = 0; i < data8.length; i++) {
+    avgScore8 = avgScore8 + data8[i].value;
   }
 
   if (avgScore1 !== 0) {
     avgScore1 = Math.round(avgScore1 / data1.length) + 10;
     avgDenominator += 1;
   }
+  if (avgScore2 !== 0) {
+    avgScore2 = Math.round(avgScore2 / data2.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore3 !== 0) {
+    avgScore3 = Math.round(avgScore3 / data3.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore4 !== 0) {
+    avgScore4 = Math.round(avgScore4 / data4.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore5 !== 0) {
+    avgScore5 = Math.round(avgScore5 / data5.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore6 !== 0) {
+    avgScore6 = Math.round(avgScore6 / data6.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore7 !== 0) {
+    avgScore7 = Math.round(avgScore7 / data7.length) + 10;
+    avgDenominator += 1;
+  }
+  if (avgScore8 !== 0) {
+    avgScore8 = Math.round(avgScore8 / data8.length) + 10;
+    avgDenominator += 1;
+  }
   avgScore5 = Math.round(avgScore5 / data5.length) + 10;
 
-  overallAvgScore = (avgScore1 + avgScore5) / avgDenominator;
+  overallAvgScore =
+    (avgScore1 +
+      avgScore2 +
+      avgScore3 +
+      avgScore4 +
+      avgScore5 +
+      avgScore6 +
+      avgScore7 +
+      avgScore8) /
+    avgDenominator;
 
   return (
     <>
@@ -68,11 +139,11 @@ const StatCard = ({ data1, data5, show }) => {
                     <span>L&M</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore2 === 0 ? "--" : avgScore2}</span>
                     <span>qlt</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore3 === 0 ? "--" : avgScore3}</span>
                     <span>pln</span>
                   </li>
                 </ul>
@@ -80,19 +151,19 @@ const StatCard = ({ data1, data5, show }) => {
               <div>
                 <ul>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore4 === 0 ? "--" : avgScore4}</span>
                     <span>e&d</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore6 === 0 ? "--" : avgScore6}</span>
                     <span>sus</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore7 === 0 ? "--" : avgScore7}</span>
                     <span>dig</span>
                   </li>
                   <li>
-                    <span>--</span>
+                    <span>{avgScore8 === 0 ? "--" : avgScore8}</span>
                     <span>buu</span>
                   </li>
                 </ul>

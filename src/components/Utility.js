@@ -1,4 +1,13 @@
-import { qb1QuesArr, qb5QuesArr } from "./Data.js";
+import {
+  qb1QuesArr,
+  qb2QuesArr,
+  qb3QuesArr,
+  qb4QuesArr,
+  qb5QuesArr,
+  qb6QuesArr,
+  qb7QuesArr,
+  qb8QuesArr,
+} from "./Data.js";
 
 const convertBase = (str, fromBase, toBase) => {
   const DIGITS =
@@ -128,8 +137,38 @@ export const returnEmptyArrFor = (qBankNum) => {
       results.push(0);
     }
   }
+  if (qBankNum === 2) {
+    for (let i = 0; i < qb2QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  if (qBankNum === 3) {
+    for (let i = 0; i < qb3QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  if (qBankNum === 4) {
+    for (let i = 0; i < qb4QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
   if (qBankNum === 5) {
     for (let i = 0; i < qb5QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  if (qBankNum === 6) {
+    for (let i = 0; i < qb6QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  if (qBankNum === 7) {
+    for (let i = 0; i < qb7QuesArr.length; i++) {
+      results.push(0);
+    }
+  }
+  if (qBankNum === 8) {
+    for (let i = 0; i < qb8QuesArr.length; i++) {
       results.push(0);
     }
   }
@@ -140,14 +179,6 @@ export const returnUrlStr = () => {
   let hash = window.location.hash.substr(1).split("?")[1];
   return hash;
 };
-
-// export const returnUrlStrForValidation = (id) => {
-//   let paramsObj = breakUrlIntoObj();
-//   paramsObj["qa" + id] = "~VAL";
-//   // console.log(serialize(paramsObj));
-
-//   return serialize(paramsObj);
-// };
 
 // returns the elements of a URL into a key value dictionary
 export const breakUrlIntoObj = () => {
@@ -160,7 +191,6 @@ export const breakUrlIntoObj = () => {
       return res;
     }, {});
   }
-
   return paramsObj;
 };
 
@@ -231,15 +261,23 @@ export const getBankStrCodeFromId = (id) => {
   let bankStrCode = "";
   if (id === 1) {
     bankStrCode = "lmgt";
+  } else if (id === 2) {
+    bankStrCode = "qlty";
+  } else if (id === 3) {
+    bankStrCode = "pln";
+  } else if (id === 4) {
+    bankStrCode = "engd";
   } else if (id === 5) {
     bankStrCode = "hsm";
+  } else if (id === 6) {
+    bankStrCode = "sus";
+  } else if (id === 7) {
+    bankStrCode = "dig";
+  } else if (id === 8) {
+    bankStrCode = "buu";
   }
   return bankStrCode;
 };
-
-// export const getKeyByValue = (object, value) => {
-//   return Object.keys(object).find((key) => object[key] === value);
-// };
 
 //qBank handleclick
 export const handleQBankCompletionClick = (

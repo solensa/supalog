@@ -1,3 +1,4 @@
+// Healt, Safety & Wellbeing
 export const qb5QuesArr = [
   "Understands their duty to look after their own health and safety and the health and safety of their team",
   "Shows their team a sense of personal and collective responsibility and commitment for health and safety",
@@ -40,6 +41,7 @@ export const qb5QuesArr = [
   "Role models capacity management and wellbeing and creates an environment to support this in their team",
 ];
 
+// Leadership & Management
 export const qb1QuesArr = [
   "Briefs the team about standards and objectives and generates strong pride in safely achieving the right quality",
   "Successfully adapts different approaches to get the best from the team",
@@ -93,4 +95,150 @@ export const qb1QuesArr = [
   "Understands the importance of regular progress reviews against objectives",
   "Can address a group of up to 30 and achieve full engagement and support for the content",
   "Communicates objectively with the whole team through briefings, tool box talks, one-to-ones, and establishes an appropriate relationship with each team member",
+];
+
+// Quality
+export const qb2QuesArr = [
+  "Understands what is required and can be relied upon to deliver a quality product which is right first time",
+  "Completes a daily record diary",
+  "Ensures that all quality control and assurance records are completed as the work proceeds",
+  "Is able to use a questioning and self checking approach to minimise errors",
+  "Instigates regular independent checks of correctness and accuracy",
+  "Reads and undertands the specification, drawings, schedules, quality plans and procedures relevant to the work being undertaken",
+  "Delivers a quality product through implementation of the quality plan",
+  "Supports and drives implementation of compliance and assurance procedures and records",
+  "Understands and communicates method statements to ensure the team completes the work accordingly",
+  "Ensures that ITP “hold” points are correctly satisfied before work proceeds",
+  "Ensures that Quality Control and Assurance Records are correctly completed and authorised as work proceeds",
+  "Keeps photographic compliance records of all work which will not subsequently be visible for inspection",
+  "Is fully aware of requirements and procedures for Quality Inspection and Test Plans, Method Statements, Quality Control checks, Quality Assurance and Record keeping",
+  "Works with stakeholders to formulate and compile ITP’s and Method Statements which ensure compliance",
+  "Knows that all works have an ITP and a Method Statement",
+  "Knows what to do to ensure ITP “hold” points are released with correct quality checking, authority and records",
+  "Carries out inspections of works in conjunction with Section Engineers and Primary Control Team",
+  "Always corrects deficient items",
+  "Helps devise improved methods which prevent reccurrence of deficient items",
+  "Encourages the use of NCR’s to help improve methods and quality",
+  "Ensures check sheets and ITP hold points for trade specification are signed off with the correct authority before proceeding",
+  " Ensures that faults identified by inspections are recorded on NCR’s and corrected and closed out accordingly",
+  "Ensures that learning from NCR’s is used to generate and improve best practice in the team",
+  "Has read and understood the quality plans, processes and procedures relevant to the work being undertaken",
+  " Achieves compliance with approved samples",
+  "Understands requirements to achieve approved samples.Is familiar with all approved samples and benchmarks relevant to the work of their team",
+  "Identifies requirements for all samples, benchmarks and approvals related to their area of work",
+  "Ensures that resource is available to achieve agreed standards and continually monitors progress on compliance",
+  "Knows how samples, bench marks and approvals fit into the LOR Quality Management System. Knows the levels of authority and records required for approvals. Knows resource requirements to meet the standards",
+  "Work from primary grids and levels provided by the Primary Control Team to provide setting out for their team in conjunction with Section Engineers",
+  "Uses a questioning and self checking approach to help minimise errors",
+  "Regularly checks measuring equipment for calibration",
+  "Seeks regular independent checks of correctness and accuracy",
+  "Accurately takes information from a drawing, schedule or specification",
+  "Uses appropriate equipment for determining dimensional accuracy",
+  "Interprets and uses information from drawings and checks and cross checks the information before use",
+  "Is able to obtain tolerance and dimensional control information from drawings, models and specifications",
+  "Sets up and controls systematic checking of dimensional control in area of work and ensures that this fits correctly with adjacent or affected work areas and trades, including following trades",
+  "Envisages how dimensional control of their area of work impinges on other trades and on the finished building/structure",
+  "Stores, handles, uses, and protects materials and finished work appropriately and in line with required standards",
+  "Knows requirements of the drawings, specifications and schedules, and the interface between their area of work and adjacent areas and trade",
+  "Ensures compliance of any material being used with drawings, specification, schedules and the purchase order / requisition",
+  "Recognises characteristics of good and bad quality in commonly used materials in both temporary and permanent applications",
+  "Acquires knowledge of unusual, unfamiliar or bespoke materials before planning or implementing work methods",
+  "Puts resources to work and monitors progress to remove snagging items promptly",
+  "Works constructively with Quality Control and Quality Assurance team to ensure systematic recording of clearance of snags",
+  "Is familiar with standard procedures for clearance of snags and the required contribution from their team",
+  "Works with their manager to identify snags relevant to their trade, and to agree with their line manager the required timescale for clearance and sign off of each snag",
+  "Liaises with other trades supervisors to ensure that snags are actioned in a practical trade sequence",
+  "Creates snagging sheets/lists, identifies appropriate resources, determines methods to systematically clear items and agrees with line manager",
+  "Identifies trends and agrees amended work methods with other Supervisors and their manager to avoid repeating ",
+  "Is aware of the detailed requirements to achieve Practical Completion and Handover of their area of work, including the authorised/approved and recorded clearance of snags",
+  "Is aware of the value of protection of finished work in reducing snags",
+];
+
+// Planning
+export const qb3QuesArr = [
+  "Addresses the overriding priority of safety and quality compliance, and avoids waste of all resources",
+  "Is aware of achievable production rates for tasks on site and proactively works towards them",
+  "Recognises that quality, safety, reliability, predictability and smart methods (and not simply speed of construction) all contribute to cost reduction and avoiding waste",
+  "Understands the principle of a budget to build including labour plant and materials for each activity",
+  "Knows how to complete allocation, time and delivery sheets for labour, plant and materials",
+  "Is aware of the budget to build for each activity in the area and monitors costs on a weekly basis against that budget",
+  "Makes interventions where budget is threatened",
+  "Regularly identifies more economic methods of implementation and is able to introduce these in a controlled manner following correct procedures",
+  "Is aware of operatives’ Terms and Conditions and CPA plant conditions of hire, and how actual costs are calculated",
+  "Has knowledge of labour, plant and material costs and the range of achievable outputs",
+  "Can follow an agreed and documented method of working controlling a number of employees",
+  "Addresses the overriding priority of safety and quality compliance in selecting methods",
+  "Knows to temporarily pause activities when circumstances change, agrees and records revised methods with their manager before re-starting",
+  "Understands that different work methods are appropriate in different situations, and is familiar with a selection of commonly used methods",
+  "Is able to determine the best method of working, select labour, plant and materials for their trade, assess the risks involved, prepare a method statement and an ITP, and brief the team",
+  "Is familiar with the need in complex multi trade interface situations to work with other Supervisors and Managers to carefully select appropriate plant, equipment, methods and coordinated sequences",
+  "Can read and understand a short term programme",
+  "Works with other Supervisors, their Manager and the Planner to coordinate and agree rolling short term weekly programmes for their area of work",
+  "Knows if the programmed activities achieve the short term goals to comply with the budget to build",
+  "Understands logical sequencing of an operation and how activities effect each other",
+  "Continuously monitors progress and intervenes where neccessary to keep on track",
+  "Knows the importance of the critical path, understands sequences of work and safety and quality constraints involved",
+  "Assesses daily and weekly resource needs with other Supervisors and their Manager, and agrees how resources are allocated to gangs to suit the short term programmes",
+  "Carries out daily management of allocated resources, identifies constraints and unforeseen events",
+  "Recognises when corrective action will require a longer period than just the current short term programme period, particularly in relation to safety and quality constraints",
+];
+
+// Engineering & Design
+export const qb4QuesArr = [
+  "Is able to follow Temporary Works drawings and information",
+  "Respects Temporary Works with the same priority and importance as all other critical safety procedures, rules and equipment",
+  "Includes Temporary Works activities in their site diary record",
+  "Encourages the same respect for Temporary Works in all members of the team and leads by example",
+  "Understands the critical importance of implementing Temporary Works strictly in accordance with the design and associated methods and sequences",
+  "Strictly complies with all Hold Points and obtains the correct Authority in writing before proceeding",
+  "Knows to temporarily pause operations when circumstances change, and to review, agree, and obtain written Authority for any changed methods or sequences from their Manager and the Temporary Works Coordinator before restarting operations",
+  "Selects Temporary Works systems for “basic” solutions from a pre-designed and approved list where appropriate",
+  "Works with the Temporary Works Coordinator, The Temporary Works Inspectors and the site Engineers to achieve full and certified compliance with approved temporary works designs",
+  "Has a good working knowledge of Temporary Works control procedures and their role in complying with them",
+  "Competently reads and implements information on models, drawings, specifications, schedules, Inspection and Test plans",
+  "Checks and identifies deficiencies in the approved Construction information in advance of construction",
+  "Creates/obtains benchmarks samples as required in good time, and retains them for future reference",
+  "Works with other team members to obtain alternative approved designs when needed",
+  "Knows who produces what information and how precedence of information is important",
+  "Knows that only information which has been approved for construction by the required authorities can be used as construction information",
+];
+
+// Sustainability
+export const qb6QuesArr = [
+  "Has attended Site Environmental Awareness training (IEMA or similar) (*IEMA Site based environmental course in development at the moment)",
+  "Has completed the ES carbon literacy module and understands basic issues of climate change and basic terminology",
+  "Understands the high-level sustainability policies, strategy and commitments of the business",
+  "Can discuss and talk to the team at a foundation level to help improve others' awareness of Environmental Sustainability",
+  "Understands the principles of environmental management onsite and applies the appropriate controls, for example: Resource management, Waste, Materials, Energy efficiency, Water efficiency, Contaminated Land, Nuisance: Dust, emissions & odours; Lighting; Noise & vibration; Traffic management and vehicle use; Traffic management plans and reducing nuisance; The historic environment and dealing with archaeological remains, Ecology, protected species and habitat and Biodiversity, Water",
+  "Is familiar with project's environmental objectives and targets and the current performance of the project",
+  "Follows environmental elements of Method Statements, Task Sheets, and Visual Task Sheets e.g. waste control, noise, dust",
+  "Be able to deliver carbon and energy saving actions (in line with the project's Energy Action Plan)",
+  "Demonstrates a personal commitment to reducing carbon emissions onsite (by reducing fuel and electricity consumption) leading by example and empowering others to do the same",
+  "Demonstrates a personal commitment to the sustainability agenda onsite (material wastage for example) leading by example and empowering others to do the same",
+  "Support trials of new and emerging sustainability initiatives on projects, implement innovation and best practice",
+  "Demonstrates an awareness of the additional benefits of reducing emissions onsite (improved health and wellbeing, reduced noise and air quality nuisance issues, cost benefits)",
+  "Actively encourages subcontractors and suppliers working on behalf of the group to reduce their emissions and material wastage",
+  "Understand when, how and who to report Environmental incidents, issues and concerns to onsite",
+];
+
+//  Digital
+export const qb7QuesArr = [
+  "Is able to mark up 2D models to mark with comments",
+  "Knows how to include pictures and drawings into electronic DABS as well as how to use the model to communicate with team",
+  "Use microsoft teams to make calls, send messages and share information ",
+  "Understands and accesses regularly, the variety of digita tools and softare that are available to them to support digital project delivery",
+  "Knowing how acces RAMS and task sheets and save on a device to inform activity",
+  "Uses shared outlook calendars to plan and manage deliveries",
+  "Is able to use One Drive in collaboration with Engineers to access and print drawings",
+  "Regularly uses the SMS and extracts relevant information to support delivery ",
+  "Accesses appropriate information to complete work satisfactorily and distributes appropriate documents to workforce. Maintains appropriate information for the site",
+  "Has a working knowledge of the site filing system and its importance. Can identify errors and discrepancies in the information presented",
+];
+
+// Business Understanding
+export const qb8QuesArr = [
+  "Understands the LOR transformation strategy and knows where to access transformation updates",
+  "Is able to describe the 5 enduring conditions and how their activity on site can support them",
+  "Shares business updates with their team",
+  "Knows the LOR values and demonstrates them to the team",
 ];
