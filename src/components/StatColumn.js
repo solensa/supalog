@@ -51,15 +51,15 @@ const StatColumn = ({ title, dataToShow, id, isVerified }) => {
   };
 
   const startClick = () => {
-    if (id === 1) {
-      let bankStrCode = getBankStrCodeFromId(id);
-      let str = "/" + bankStrCode + "?" + returnUrlStr();
-      // console.log(str);
-      history.push(str);
-    } else {
-      console.log("start click");
-      alert("Coming Soon!");
-    }
+    // if (id === 1) {
+    let bankStrCode = getBankStrCodeFromId(id);
+    let str = "/" + bankStrCode + "?" + returnUrlStr();
+    // console.log(str);
+    history.push(str);
+    // } else {
+    //   console.log("start click");
+    //   alert("Coming Soon!");
+    // }
   };
 
   const validateClick = () => {
